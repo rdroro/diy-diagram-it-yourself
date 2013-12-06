@@ -6,6 +6,7 @@ main program to transform DIY language in diagramm
 """
 
 import sys, getopt
+from parser import Parser
 
 version = '0.0.1'
 
@@ -15,7 +16,7 @@ def usage ():
 	print 'diy options:'
 	print '\t-h: Display this help'
 	print '\t-v: print diy version'
-	print '\t-i: input file to transform'
+	print '\t-o: path to output svg file'
 	print ''
 	return
 
@@ -24,7 +25,7 @@ def main ():
 	argv = argv[1:]
 
 	try:
-		opts, args = getopt.getopt(argv, "hvi:o:", ['help', 'version'])
+		opts, args = getopt.getopt(argv, "hvo:", ['help', 'version', 'output'])
 	except getopt.GetoptError as err:
 		print ''
 		print err
@@ -33,6 +34,9 @@ def main ():
 
 	for opt, arg in opts:
 		if opt in ('-h', '--help'):
+			json = open('../tests/json')
+			parser = Parser(json)
+			parser.parse()
 			usage()
 		elif opt in ('-v', '--version'):
 			print 'diy version '+version
