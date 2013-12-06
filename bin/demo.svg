@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width='900' height='500'>
+
+
+<g font-family="Sans" font-size="14" >
+	<rect width='200' height='100' fill='#917C6F' stroke="#ffdb60f" stroke-width="2"></rect>
+    <text fill="#fff" x='106' y='56' style='text-anchor: middle'>
+      <tspan>
+        Interpretor.py
+      </tspan>
+    </text>
+  </g>
+
+</svg>
