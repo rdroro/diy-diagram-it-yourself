@@ -12,7 +12,7 @@ DIY - Diagram It Yourselft is a markdown language for describing easily the sche
 + Code sucks : Bah, code sucks, give me a GUI
 + Cross-platform : I'm sick of files that you can't edit without installing a gas-factory
 
-# How it works
+# Todo
 
-src/ contains source file
-src/svg
+* Define grid for element
+* Think of code organization

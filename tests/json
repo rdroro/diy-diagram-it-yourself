@@ -4,11 +4,11 @@
     "name": "markdown"
   },
   {
-  	"type": "box",
-  	"name": "Parser"
+    "type": "box",
+    "name": "Parser"
   },
   {
-  	"type": "box",
-  	"name": "Interpretor"
+    "type": "box",
+    "name": "Interpretor.py"
   }
 ]

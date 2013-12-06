@@ -22,10 +22,11 @@ def usage ():
 
 def main ():
 	argv = sys.argv
+	# first argument must be input file
 	argv = argv[1:]
 
 	try:
-		opts, args = getopt.getopt(argv, "hvo:", ['help', 'version', 'output'])
+		opts, args = getopt.getopt(argv, "hi:vo:", ['help', 'version', 'output', 'input'])
 	except getopt.GetoptError as err:
 		print ''
 		print err
@@ -34,12 +35,14 @@ def main ():
 
 	for opt, arg in opts:
 		if opt in ('-h', '--help'):
-			json = open('../tests/json')
-			parser = Parser(json)
-			parser.parse()
 			usage()
 		elif opt in ('-v', '--version'):
 			print 'diy version '+version
+		elif opt in ('-i', '--input'):
+			json = open(arg)
+			parser = Parser(json)
+			parser.parse()
+			json.close()
 		
 		else:
 			usage()
