@@ -1,3 +1,4 @@
+import os
 class Interpretor:
 	""" 
 	Change JSON str to svg diagram
@@ -7,17 +8,26 @@ class Interpretor:
 		self.outputFileName = 'demo.svg'
 		self.libPath = '../lib/'
 		self.defaultTemplatePath = self.libPath+'templates/default/'
+		self.element = os.listdir(self.defaultTemplatePath+'json')
+		self.xBase = 202
+		self.xMargin = 10
+		self.xText = 102
+
 
 	"""
 	Parse Json included in constructor to generate diagrams
 	"""
 	def generate (self):
+		i = 0
+		self.writeHeader()
 		for obj in self.json:
 			if obj['type'] == 'box':
-				self.writeHeader()
 				template = self.readFile(self.defaultTemplatePath+'svg/box.svg')
 				template = template.replace('{{name}}', obj['name'])
+				template = template.replace('{{x}}', (self.xBase*i+self.xMargin*i).__str__())
+				template = template.replace('{{xText}}', (self.xText+self.xBase*i+self.xMargin*i).__str__())
 				self.appendInFile(self.outputFileName, template)
+				i = i+1
 		self.appendInFile(self.outputFileName, '</svg>')
 		return
 

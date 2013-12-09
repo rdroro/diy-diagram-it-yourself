@@ -1,6 +1,6 @@
 <g font-family="Sans" font-size="14" >
-	<rect width='200' height='100' fill='#917C6F' stroke="#ffdb60f" stroke-width="2"></rect>
-    <text fill="#fff" x='106' y='56' style='text-anchor: middle'>
+	<rect x="{{x}}" y="0" width='200' height='100' style='fill: #917C6F; stroke: #f0cb47; stroke-width: 2'/>
+    <text fill="#fff" x='{{xText}}' y='52' style='text-anchor: middle'>
       <tspan>
         {{name}}
       </tspan>
