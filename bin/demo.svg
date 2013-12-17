@@ -5,31 +5,35 @@
 <svg width='900' height='500'>
 
 
+
 <g font-family="Sans" font-size="14" >
 	<rect x="0" y="0" width='200' height='100' style='fill: #917C6F; stroke: #f0cb47; stroke-width: 2'/>
-    <text fill="#fff" x='102' y='52' style='text-anchor: middle'>
+    <text fill="#fff" x='{{xText}}' y='52' style='text-anchor: middle'>
       <tspan>
         markdown
       </tspan>
     </text>
   </g>
 
+
 <g font-family="Sans" font-size="14" >
-	<rect x="212" y="0" width='200' height='100' style='fill: #917C6F; stroke: #f0cb47; stroke-width: 2'/>
-    <text fill="#fff" x='314' y='52' style='text-anchor: middle'>
+	<rect x="0" y="0" width='200' height='100' style='fill: #917C6F; stroke: #f0cb47; stroke-width: 2'/>
+    <text fill="#fff" x='{{xText}}' y='52' style='text-anchor: middle'>
       <tspan>
         Parser
       </tspan>
     </text>
   </g>
 
+
 <g font-family="Sans" font-size="14" >
-	<rect x="424" y="0" width='200' height='100' style='fill: #917C6F; stroke: #f0cb47; stroke-width: 2'/>
-    <text fill="#fff" x='526' y='52' style='text-anchor: middle'>
+	<rect x="0" y="0" width='200' height='100' style='fill: #917C6F; stroke: #f0cb47; stroke-width: 2'/>
+    <text fill="#fff" x='{{xText}}' y='52' style='text-anchor: middle'>
       <tspan>
         Interpretor.py
       </tspan>
     </text>
   </g>
+
 
 </svg>

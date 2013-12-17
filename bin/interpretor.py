@@ -1,55 +1,45 @@
 import os
+import json
+from svgRender import SvgRender
 class Interpretor:
 	""" 
 	Change JSON str to svg diagram
 	"""
 	def __init__(self, json):
+		# self.json contains all elements write by user in dict format
 		self.json = json
-		self.outputFileName = 'demo.svg'
+		# @todo Externalize lib path	
 		self.libPath = '../lib/'
-		self.defaultTemplatePath = self.libPath+'templates/default/'
-		self.element = os.listdir(self.defaultTemplatePath+'json')
-		self.xBase = 202
-		self.xMargin = 10
-		self.xText = 102
+		self.defaultTemplatePath = self.libPath+'templates/default/'	
+
+		# List all available element in lib path
+		self.elements = os.listdir(self.defaultTemplatePath+'json')
+		# Remove extension in list
+		self.elements = [elt.replace('.json', '') for elt in self.elements]
+
+		# Initialize SvgWriter for render
+		self.svg = SvgRender(self.defaultTemplatePath)
 
 
 	"""
 	Parse Json included in constructor to generate diagrams
 	"""
 	def generate (self):
-		i = 0
-		self.writeHeader()
+
+		# self.writeHeader()
 		for obj in self.json:
-			if obj['type'] == 'box':
-				template = self.readFile(self.defaultTemplatePath+'svg/box.svg')
-				template = template.replace('{{name}}', obj['name'])
-				template = template.replace('{{x}}', (self.xBase*i+self.xMargin*i).__str__())
-				template = template.replace('{{xText}}', (self.xText+self.xBase*i+self.xMargin*i).__str__())
-				self.appendInFile(self.outputFileName, template)
-				i = i+1
-		self.appendInFile(self.outputFileName, '</svg>')
+			if not obj['type'] in self.elements:
+				# Element is missing in lib/.../json folder
+				print "[ERROR] Unknown element: "+obj['type']
+			else:
+				base = json.load(open(self.defaultTemplatePath+'json/'+obj['type']+'.json'))
+				base.update(obj)
+				self.svg.addElement(base)
+		self.svg.writeFooter()
+		self.writeFile('demo.svg', self.svg.__str__())
 		return
 
-	"""
-	Write <svg> tag and file description into svg file
-	"""
-	def writeHeader(self):
-		# import os
-		# print os.listdir("../lib/")
-		self.outputFile = open(self.outputFileName, 'w')
-		header = open(self.defaultTemplatePath+'svg/partials/header.tpl')
-		self.outputFile.write(header.read())
-		header.close()
-		self.outputFile.close()
-		return
-
-	"""
-	Close </svg> tag into generate svg file
-	"""
-	def writeFooter(self):
-		print '</svg>'
-		return
+	
 
 	"""
 	Simple function to add content at the end of file
