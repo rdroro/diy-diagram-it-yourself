@@ -5,10 +5,12 @@
   },
   {
     "type": "box",
-    "name": "Parser"
+    "name": "Parser",
+    "x": 210
   },
   {
-    "type": "box",
-    "name": "Interpretor.py"
+    "type": "gplus",
+    "name": "Interpretor.py",
+    "x": 420
   }
 ]

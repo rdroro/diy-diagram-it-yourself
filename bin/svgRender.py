@@ -1,3 +1,5 @@
+import re
+
 class SvgRender:
 
 	"""SvgRender is a class for write SVG element in output"""
@@ -13,7 +15,12 @@ class SvgRender:
 		eltFile.close
 		for key, value in elements.iteritems():
 			if (key != 'type'):
-				elt = elt.replace('{{'+key.__str__()+'}}', value.__str__())
+				if not re.match(r'##(.*)##', value.__str__()) is None:
+					tmp = value.__str__().replace('#', '')
+					tmp = eval(tmp)
+					elt = elt.replace('{{'+key.__str__()+'}}', tmp.__str__())
+				else:
+					elt = elt.replace('{{'+key.__str__()+'}}', value.__str__())
 		self.svgString += "\n"+elt
 
 	"""
