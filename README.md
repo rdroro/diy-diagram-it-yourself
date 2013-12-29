@@ -14,5 +14,9 @@ DIY - Diagram It Yourselft is a markdown language for describing easily the sche
 
 # Todo
 
-* Define grid for element
-* Think of code organization
+* Define grid for element: Twitter Bootstrap inspiration
+* Think of code organization: Done but can be improve
+* Add elements
+** Social elements (github, facebook, twitter)
+** Infrastructure elements (server, database)
+* Add links between elements
