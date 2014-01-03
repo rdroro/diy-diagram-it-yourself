@@ -11,6 +11,7 @@
   {
     "type": "gplus",
     "name": "Interpretor.py",
-    "x": 420
+    "x": 0,
+    "y": 100
   }
 ]
