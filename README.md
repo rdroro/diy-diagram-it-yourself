@@ -1,7 +1,10 @@
 diy-diagram-it-yourself
 =======================
 
-DIY - Diagram It Yourselft is a markdown language for describing easily the schemes in your code documentation to illustrate interaction, dependance, etc, on wiki pages or just to share diagrams with others people without specific software 
+DIY - Diagram It Yourselft is a markdown language for describing easily the schemes in your code documentation to illustrate interaction, dependance, etc, on wiki pages or just to share diagrams with others people without specific software
+
+This tools is under development. Specific markdown language are not defined yet. Currently, we use JSON to
+describe diagram
 
 ## Philosophy
 
