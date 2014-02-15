@@ -3,5 +3,6 @@
   "name": "Box elt",
   "x": 0,
   "y": 0,
-  "xText": "##102+elements['x']##"
+  "xText": "##102+this.x##",
+  "yText": "##52+this.y##"
 }

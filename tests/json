@@ -6,12 +6,19 @@
   {
     "type": "box",
     "name": "Parser",
-    "x": 210
+    "x": 2
   },
   {
     "type": "github",
     "name": "Interpretor.py",
     "x": 0,
-    "y": 100
+    "y": 1
+  },
+
+  {
+    "type": "gplus",
+    "name": "gplus",
+    "x": 3,
+    "y": 2
   }
 ]

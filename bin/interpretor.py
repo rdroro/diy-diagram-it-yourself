@@ -1,6 +1,9 @@
 import os
 import json
+import re
+from gridManagement import GridManagement
 from svgRender import SvgRender
+
 class Interpretor:
 	""" 
 	Change JSON str to svg diagram
@@ -34,10 +37,52 @@ class Interpretor:
 			else:
 				base = json.load(open(self.defaultTemplatePath+'json/'+obj['type']+'.json'))
 				base.update(obj)
+
+				# Get position of element into grid
+				base = self.getGridPosition(base)
+
+				# Transform calculated statements
+				base = self.evalCalculatedStatements(base)
+
+				# Transform element in SVG
 				self.svg.addElement(base)
+
 		self.svg.writeFooter()
 		self.writeFile('demo.svg', self.svg.__str__())
 		return
+
+	"""
+	Eval each calculated statements identified by ##(.*)##
+	@param element a dictionnary of one element
+	@return dictionnary element passed in parameter with eval calculate value 
+	"""
+	def evalCalculatedStatements(self, element):
+		for key, value in element.iteritems():
+			if (key != 'type'):
+				if not re.match(r'##(.*)##', value.__str__()) is None:
+					tmp = value.__str__().replace('#', '')
+					references = re.findall('(this\.([a-zA-Z0-9_]*))', tmp)
+					for ref in references:
+						tmp = tmp.__str__().replace(ref[0], "element['"+ref[1]+"']")
+
+					tmp = eval(tmp)
+					element[key] = tmp
+		return element
+
+
+	"""
+	Transform grid position into pixel position using GridManagement
+	@param element a dictionnary of one element
+	@return dictonnary element passed in parameter with pixel value for x and y
+	"""
+	def getGridPosition (self, element):
+		# transform position by using GridManagement
+		# elements must have x and y parameters
+		position = GridManagement.getPosition(element['x'], element['y'])
+		element['x'] = position['x']
+		element['y'] = position['y']
+		return element
+
 
 	
 

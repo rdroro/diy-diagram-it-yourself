@@ -2,5 +2,5 @@
 	"type": "github",
 	"x": 0,
 	"y": 0,
-	"realy": "##-952.36215+elements['y']##"
+	"realy": "##-952.36215+this.y##"
 }

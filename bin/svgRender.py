@@ -9,18 +9,17 @@ class SvgRender:
 		self.svgString = ""
 		self.writeHeader()
 
-	def addElement(self, elements):
-		eltFile = open(self.libPath+'/svg/'+elements['type']+'.svg')
+	"""
+	Transform json element to svg element. Replace all {{KEY}} value by {{VALUE}}
+	@param 
+	"""
+	def addElement(self, element):
+		eltFile = open(self.libPath+'/svg/'+element['type']+'.svg')
 		elt = eltFile.read()
 		eltFile.close
-		for key, value in elements.iteritems():
+		for key, value in element.iteritems():
 			if (key != 'type'):
-				if not re.match(r'##(.*)##', value.__str__()) is None:
-					tmp = value.__str__().replace('#', '')
-					tmp = eval(tmp)
-					elt = elt.replace('{{'+key.__str__()+'}}', tmp.__str__())
-				else:
-					elt = elt.replace('{{'+key.__str__()+'}}', value.__str__())
+				elt = elt.replace('{{'+key.__str__()+'}}', value.__str__())
 		self.svgString += "\n"+elt
 
 	"""
