@@ -4,6 +4,7 @@ Grid management
 ## How it works
 
 The hole diagram is in grid layout. You can put an element into the cell by adding x and y parameters as:
+    
     {
     "type": "box",
     "name": "Grid System"
