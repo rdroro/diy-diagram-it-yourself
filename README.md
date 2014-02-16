@@ -17,7 +17,11 @@ describe diagram
 
 # Todo
 
-* Define grid for element: Twitter Bootstrap inspiration
+* Rewrite code documentation using real convention
+* Rewrite Unit-test
+* Optimize method Interpretor.evalCalculatedStatements
+
+* Define grid for element: Twitter Bootstrap inspiration -> Done
 * Think of code organization: Done but can be improve
 * Add elements
 ** Social elements (github, facebook, twitter)
