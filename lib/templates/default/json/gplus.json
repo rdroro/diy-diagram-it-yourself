@@ -2,5 +2,8 @@
 	"type": "gplus",
 	"x": 0,
 	"y": 0,
-	"realy": "##-952.36215+this.y##"
+	"realX": "##this.x##",
+	"realY": "##-952.36215+this.y##",
+	"vertical-align": "",
+	"horizontal-align": ""
 }

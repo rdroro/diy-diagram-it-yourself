@@ -3,5 +3,5 @@
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
 <svg width='900' height='500'>
-
+<rect style="fill: #aaa;" width="100%" height="100%"/>
 

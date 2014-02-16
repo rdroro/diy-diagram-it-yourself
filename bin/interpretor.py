@@ -38,11 +38,15 @@ class Interpretor:
 				base = json.load(open(self.defaultTemplatePath+'json/'+obj['type']+'.json'))
 				base.update(obj)
 
+				# Transform calculated statements
+				base = self.evalCalculatedStatements(base, False)
+
 				# Get position of element into grid
 				base = self.getGridPosition(base)
 
 				# Transform calculated statements
-				base = self.evalCalculatedStatements(base)
+				base = self.evalCalculatedStatements(base, True)
+
 
 				# Transform element in SVG
 				self.svg.addElement(base)
@@ -54,19 +58,21 @@ class Interpretor:
 	"""
 	Eval each calculated statements identified by ##(.*)##
 	@param element a dictionnary of one element
-	@return dictionnary element passed in parameter with eval calculate value 
+	@return dictionnary element passed in parameter with eval calculated statements 
 	"""
-	def evalCalculatedStatements(self, element):
+	def evalCalculatedStatements(self, element, pEval):
 		for key, value in element.iteritems():
 			if (key != 'type'):
-				if not re.match(r'##(.*)##', value.__str__()) is None:
-					tmp = value.__str__().replace('#', '')
-					references = re.findall('(this\.([a-zA-Z0-9_]*))', tmp)
+				if not re.match('##(.*)##', value.__str__()) is None:
+					value = value.__str__().replace('#', '')
+					references = re.findall('(this\.([a-zA-Z0-9_]*))', value)
 					for ref in references:
-						tmp = tmp.__str__().replace(ref[0], "element['"+ref[1]+"']")
+						value = value.__str__().replace(ref[0], "element['"+ref[1]+"']")
 
-					tmp = eval(tmp)
-					element[key] = tmp
+				if pEval and re.findall("element\['.*'\]", value.__str__()):
+					value = eval(value)
+				
+				element[key] = value
 		return element
 
 
@@ -78,12 +84,10 @@ class Interpretor:
 	def getGridPosition (self, element):
 		# transform position by using GridManagement
 		# elements must have x and y parameters
-		position = GridManagement.getPosition(element['x'], element['y'])
+		position = GridManagement.getPosition(element['x'], element['y'], element['vertical-align'], element['horizontal-align'])
 		element['x'] = position['x']
 		element['y'] = position['y']
 		return element
-
-
 	
 
 	"""

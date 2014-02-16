@@ -1,9 +1,8 @@
 <g font-family="Sans" font-size="14" >
-	<rect x="{{realX}}" y="{{realY}}" width='150' height='50' style='fill: #666666; stroke: #ffffff; stroke-width: 2'/>
+	<circle cx="{{realX}}" cy="{{realY}}" r="50" stroke="#555" stroke-width="2" fill="#3f74e9" />
 	<text fill="#fff" x='{{xText}}' y='{{yText}}' style='text-anchor: middle'>
 		<tspan>
 			{{name}}
 		</tspan>
 	</text>
 </g>
-

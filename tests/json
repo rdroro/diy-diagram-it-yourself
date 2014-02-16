@@ -4,6 +4,12 @@
     "name": "markdown"
   },
   {
+    "type": "circle",
+    "name": "Circle",
+    "x": 0,
+    "y": 2
+  },
+  {
     "type": "box",
     "name": "Parser",
     "x": 2
@@ -19,6 +25,6 @@
     "type": "gplus",
     "name": "gplus",
     "x": 3,
-    "y": 2
+    "y": 1
   }
 ]

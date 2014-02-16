@@ -1,0 +1,12 @@
+{
+	"type": "circle",
+	"name": "circle",
+	"x": 0,
+	"y": 0,
+	"realX": "##50+this.x##",
+	"realY": "##50+this.y##",
+	"vertical-align": "middle",
+	"horizontal-align": "middle",
+	"xText": "##52+this.x##",
+	"yText": "##52+this.y##"
+}
