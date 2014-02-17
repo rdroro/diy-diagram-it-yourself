@@ -19,9 +19,9 @@ describe diagram
 
 * Rewrite code documentation using real convention
 * Rewrite Unit-test
+
 * ~~Vertical and horizontal alignement must be defined in json lib~~
 * Optimize method Interpretor.evalCalculatedStatements -> Done but can be improved
-
 * ~~Define grid for element: Twitter Bootstrap inspiration~~
 * Think of code organization: Done but can be improve
 * Add elements:
@@ -29,3 +29,4 @@ describe diagram
 * ~~Infrastructure elements (server, database)~~
 * Infrastructure elements (db, noSQLdb, server, server-group)
 * Add links between elements
+
