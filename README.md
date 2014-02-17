@@ -19,7 +19,7 @@ describe diagram
 
 * Rewrite code documentation using real convention
 * Rewrite Unit-test
-* Vertical and horizontal alignement must be defined in json lib
+* _Vertical and horizontal alignement must be defined in json lib_
 * Optimize method Interpretor.evalCalculatedStatements
 
 * Define grid for element: Twitter Bootstrap inspiration -> Done
