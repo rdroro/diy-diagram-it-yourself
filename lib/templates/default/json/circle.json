@@ -8,5 +8,9 @@
 	"vertical-align": "middle",
 	"horizontal-align": "middle",
 	"xText": "##50+this.x##",
-	"yText": "##50+3+this.y##"
+	"yText": "##50+3+this.y##",
+	"horizontal-middle": 50,
+	"horizontal-right": 100,
+	"vertical-middle": 0,
+	"vertical-bottom": 0
 }

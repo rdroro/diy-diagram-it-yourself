@@ -5,5 +5,9 @@
 	"realX": "##this.x##",
 	"realY": "##-952.36215+this.y##",
 	"vertical-align": "",
-	"horizontal-align": ""
+	"horizontal-align": "",
+	"horizontal-middle": 0,
+	"horizontal-right": 0,
+	"vertical-middle": 0,
+	"vertical-bottom": 0
 }

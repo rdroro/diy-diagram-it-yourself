@@ -10,14 +10,8 @@ class GridManagement:
 	X_SIZE = 200
 	Y_SIZE = 100
 
-	VERTICAL_MIDDLE_ALIGN=25
-	HONRIZONTAL_MIDDLE_ALIGN=25
-
 	VERTICAL_TOP_ALIGN=0
 	HORIZONTAL_LEFT_ALIGN=0
-
-	VERTICAL_BOTTOM_ALIGN=50
-	HORIZONTAL_RIGHT_ALIGN=50
 
 	"""
 	Static method which convert grid position (x, y) to pixel position.
@@ -32,7 +26,11 @@ class GridManagement:
 	horizontalAlignement -- The horizontal position in a cell
 	"""
 	@staticmethod
-	def getPosition (x, y, verticalAlignement, horizontalAlignement):
+	def getPosition (element):
+		x = element['x']
+		y = element['y'] 
+		verticalAlignement = element['vertical-align'] 
+		horizontalAlignement = element['horizontal-align']
 		try:
 			x = int(x)
 			y = int(y)
@@ -46,14 +44,14 @@ class GridManagement:
 		horizontalAlign = GridManagement.HORIZONTAL_LEFT_ALIGN
 
 		if verticalAlignement == "middle":
-			verticalAlign = GridManagement.VERTICAL_MIDDLE_ALIGN
+			verticalAlign = element['vertical-middle']
 		if verticalAlignement == "bottom":
-			verticalAlign = GridManagement.VERTICAL_BOTTOM_ALIGN
+			verticalAlign = element['vertical-bottom']
 
 		if horizontalAlignement == "middle":
-			horizontalAlign = GridManagement.HONRIZONTAL_MIDDLE_ALIGN
+			horizontalAlign = element['horizontal-middle']
 		if horizontalAlignement == "right":
-			horizontalAlign = GridManagement.HORIZONTAL_RIGHT_ALIGN
+			horizontalAlign = element['horizontal-right']
 
 		position = {}
 		position['x'] = x*GridManagement.X_SIZE+horizontalAlign

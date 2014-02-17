@@ -14,6 +14,13 @@
     "yEnd": 250
   },
   {
+    "type": "line",
+    "xStart": 100,
+    "yStart": 50,
+    "xEnd": 100,
+    "yEnd": 150
+  },
+  {
     "type": "box",
     "name": "Markdown",
     "vertical-align": "middle",
@@ -22,8 +29,10 @@
   {
     "type": "circle",
     "name": "Circle",
-    "x": 2,
-    "y": 2
+    "vertical-align": "middle",
+    "horizontal-align": "middle",
+    "x": 0,
+    "y": 1
   },
   {
     "type": "box",

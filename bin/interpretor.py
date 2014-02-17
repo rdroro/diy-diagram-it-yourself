@@ -116,7 +116,7 @@ class Interpretor:
 	def getGridPosition (self, element):
 		# transform position by using GridManagement
 		# elements must have x and y parameters
-		position = GridManagement.getPosition(element['x'], element['y'], element['vertical-align'], element['horizontal-align'])
+		position = GridManagement.getPosition(element)
 		element['x'] = position['x']
 		element['y'] = position['y']
 		return element
