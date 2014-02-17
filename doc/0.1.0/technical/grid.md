@@ -16,6 +16,6 @@ As you see, to set an element into a cell, just type x and y parameters where x 
 
 
 You can define a specific number of columns/rows for your diagram. By default, new diagram is set
-with 4 columns and 3 rows.
+with 4 columns and 4 rows.
 
 Currently, diagram is not dynamic. You must specify the size of the diagram if elements position are out of bound 

@@ -7,6 +7,6 @@
 	"realY": "##50+this.y##",
 	"vertical-align": "middle",
 	"horizontal-align": "middle",
-	"xText": "##52+this.x##",
-	"yText": "##52+this.y##"
+	"xText": "##50+this.x##",
+	"yText": "##50+3+this.y##"
 }

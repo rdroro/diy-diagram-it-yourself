@@ -1,8 +1,6 @@
-<g font-family="Sans" font-size="14" >
-	<circle cx="{{realX}}" cy="{{realY}}" r="50" stroke="#555" stroke-width="2" fill="#3f74e9" />
+<g font-family="Sans" font-size="12px" >
+	<circle cx="{{realX}}" cy="{{realY}}" r="49" stroke="#555" stroke-width="2" fill="#3f74e9" />
 	<text fill="#fff" x='{{xText}}' y='{{yText}}' style='text-anchor: middle'>
-		<tspan>
 			{{name}}
-		</tspan>
 	</text>
 </g>

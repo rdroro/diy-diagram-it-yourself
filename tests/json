@@ -1,24 +1,45 @@
 [
   {
+    "type": "line",
+    "xStart": 100,
+    "yStart": 50,
+    "xEnd": 500,
+    "yEnd": 50
+  },
+  {
+    "type": "line",
+    "xStart": 500,
+    "yStart": 50,
+    "xEnd": 100,
+    "yEnd": 250
+  },
+  {
     "type": "box",
-    "name": "markdown"
+    "name": "Markdown",
+    "vertical-align": "middle",
+    "horizontal-align": "middle"
   },
   {
     "type": "circle",
     "name": "Circle",
-    "x": 0,
+    "x": 2,
     "y": 2
   },
   {
     "type": "box",
     "name": "Parser",
+    "y": 2
+  },
+  {
+    "type": "box",
+    "name": "Interpretor",
     "x": 2
   },
   {
     "type": "github",
     "name": "Interpretor.py",
     "x": 0,
-    "y": 1
+    "y": 3
   },
 
   {

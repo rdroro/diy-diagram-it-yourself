@@ -5,6 +5,9 @@ from gridManagement import GridManagement
 from svgRender import SvgRender
 
 class Interpretor:
+
+	STATS_NB_ELEMENTS="nb_elements"
+
 	""" 
 	Change JSON str to svg diagram
 	"""
@@ -19,6 +22,11 @@ class Interpretor:
 		self.elements = os.listdir(self.defaultTemplatePath+'json')
 		# Remove extension in list
 		self.elements = [elt.replace('.json', '') for elt in self.elements]
+
+		# Store lines elements
+		self.lines = []
+
+		self.stats = {}
 
 		# Initialize SvgWriter for render
 		self.svg = SvgRender(self.defaultTemplatePath)
@@ -38,14 +46,22 @@ class Interpretor:
 				base = json.load(open(self.defaultTemplatePath+'json/'+obj['type']+'.json'))
 				base.update(obj)
 
+				if obj['type'] == "line":
+					self.lines.append(obj)
+					# Eval expression if necessary
+					base = self.evalStatements(base)
+					# Transform element in SVG
+					self.svg.addElement(base)
+					continue
+
 				# Transform calculated statements
-				base = self.evalCalculatedStatements(base, False)
+				base = self.evalCalculatedStatements(base)
 
 				# Get position of element into grid
 				base = self.getGridPosition(base)
 
-				# Transform calculated statements
-				base = self.evalCalculatedStatements(base, True)
+				# Eval expression if necessary
+				base = self.evalStatements(base)
 
 
 				# Transform element in SVG
@@ -53,27 +69,43 @@ class Interpretor:
 
 		self.svg.writeFooter()
 		self.writeFile('demo.svg', self.svg.__str__())
-		return
+		self.stats[Interpretor.STATS_NB_ELEMENTS] = len(self.json)
+		return self.stats
 
 	"""
-	Eval each calculated statements identified by ##(.*)##
-	@param element a dictionnary of one element
+	Transform each calculated statements identified by ##(.*)##
+
+	element -- a dictionnary of one element
 	@return dictionnary element passed in parameter with eval calculated statements 
 	"""
-	def evalCalculatedStatements(self, element, pEval):
+	def evalCalculatedStatements(self, element):
 		for key, value in element.iteritems():
 			if (key != 'type'):
+				# if value is an expression (identified by ##($)##)
 				if not re.match('##(.*)##', value.__str__()) is None:
 					value = value.__str__().replace('#', '')
 					references = re.findall('(this\.([a-zA-Z0-9_]*))', value)
+
+					# Transform each this.$ to element['$']
 					for ref in references:
 						value = value.__str__().replace(ref[0], "element['"+ref[1]+"']")
-
-				if pEval and re.findall("element\['.*'\]", value.__str__()):
-					value = eval(value)
 				
 				element[key] = value
 		return element
+
+	"""
+	Evaluate each expression in value element containing 'element[]'' expression.
+	Return the same element in parameter with evaluated expression
+
+	element -- JSON object representing an element in the diagram
+	"""
+	def evalStatements(self, element):
+		for key, value in element.iteritems():
+			if re.findall("element\['.*'\]", value.__str__()):
+				value = eval(value)
+				element[key] = value
+		return element
+
 
 
 	"""

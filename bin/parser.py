@@ -12,11 +12,11 @@ class Parser:
 		# Transform self.str to json
 		# For the test, self.str is already json
 		self.json = json.load(self.str)
-		self.transform()
+		return self.transform()
 
 	def transform (self):
 		interpretor = Interpretor (self.json)
-		interpretor.generate()
+		return interpretor.generate()
 
 		
 
