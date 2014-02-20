@@ -1,0 +1,31 @@
+[
+	{
+		"type": "box",
+		"name": "box"
+	},
+	{
+		"type": "database",
+		"name": "database",
+		"position": "1,0"
+	},
+	{
+		"type": "circle",
+		"name": "circle",
+		"position": "2,0"
+	},
+	{
+		"type": "git",
+		"name": "git",
+		"position": "3,0"
+	},
+	{
+		"type": "github",
+		"name": "rdroro",
+		"position": "0,1"
+	},
+	{
+		"type": "gplus",
+		"name": "gplus",
+		"position": "1, 1"
+	}
+]

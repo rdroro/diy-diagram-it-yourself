@@ -53,7 +53,9 @@ class GridManagement:
 		if horizontalAlignement == "right":
 			horizontalAlign = element['horizontal-right']
 
-		position = {}
-		position['x'] = x*GridManagement.X_SIZE+horizontalAlign
-		position['y'] = y*GridManagement.Y_SIZE+verticalAlign
-		return position
+		
+		element['x'] = x*GridManagement.X_SIZE+horizontalAlign
+		element['y'] = y*GridManagement.Y_SIZE+verticalAlign
+		element['xCenter'] = element['x']+element["xCenter"]
+		element['yCenter'] = element['y']+element["yCenter"]
+		return element

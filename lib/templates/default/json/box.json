@@ -1,16 +1,13 @@
 {
   "type": "box",
   "name": "Box elt",
-  "x": 0,
-  "y": 0,
+  "position": "0,0",
   "vertical-align": "middle",
   "horizontal-align": "middle",
-  "realX": "##this.x##",
-  "realY": "##this.y##",
-  "xText": "##75+this.x##",
-  "yText": "##25+3+this.y##",
   "horizontal-middle": 25,
   "horizontal-right": 50,
   "vertical-middle": 25,
-  "vertical-bottom": 50
+  "vertical-bottom": 50,
+  "xCenter": 75,
+  "yCenter": 25
 }

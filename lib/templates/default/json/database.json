@@ -1,0 +1,13 @@
+{
+	"type": "database",
+	"name": "circle",
+	"position": "0,0",
+	"vertical-align": "middle",
+	"horizontal-align": "middle",
+	"horizontal-middle": 63,
+	"horizontal-right": 126,
+	"vertical-middle": 6,
+	"vertical-bottom": 12,
+	"xCenter": 37,
+  	"yCenter": 50
+}

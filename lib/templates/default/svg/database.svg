@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>SVG file - demo</title>
-
-</head>
-<body>
-   <svg width='900' height='500'>
-
-
-<g transform="translate(0, 0)">
+<g transform="translate({{x}}, {{y}})">
     <rect
        style="fill:#4d4d4d;fill-opacity:1;fill-rule:nonzero;stroke:none"
        width="74"
@@ -35,12 +24,7 @@
        rx="5"
        ry="5" />
 
-       <text fill="#000" x='37' y='85' style='text-anchor: middle' font-family="Sans" font-size="12px">
-			MySQL
+       <text fill="#fff" x='37' y='85' style='text-anchor: middle' font-family="Sans" font-size="12px">
+			{{name}}
 		</text>
   </g>
-
-
-</svg>
-</body>
-</html>

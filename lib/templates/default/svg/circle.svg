@@ -1,6 +1,6 @@
-<g font-family="Sans" font-size="12px" style="z-index: 100">
-	<circle cx="{{realX}}" cy="{{realY}}" r="49" stroke="#fff" stroke-width="2" fill="#3f74e9" />
-	<text fill="#fff" x='{{xText}}' y='{{yText}}' style='text-anchor: middle'>
+<g transform="translate({{x}}, {{y}})" font-family="Sans" font-size="12px">
+	<circle cx="50" cy="50" r="49" stroke="#fff" stroke-width="2" fill="#3f74e9" />
+	<text fill="#fff" x='50' y='53' style='text-anchor: middle'>
 			{{name}}
 	</text>
 </g>

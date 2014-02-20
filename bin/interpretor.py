@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import hashlib
 from gridManagement import GridManagement
 from svgRender import SvgRender
 
@@ -23,13 +24,17 @@ class Interpretor:
 		# Remove extension in list
 		self.elements = [elt.replace('.json', '') for elt in self.elements]
 
-		# Store lines elements
-		self.lines = []
+		# Store links elements
+		self.links = []
+
+		# Store all elements (except links) in dictionnary where element['name'] is the key
+		self.namedElements = {}
 
 		self.stats = {}
 
 		# Initialize SvgWriter for render
 		self.svg = SvgRender(self.defaultTemplatePath)
+		self.svgLinks = SvgRender(self.defaultTemplatePath)
 
 
 	"""
@@ -46,28 +51,33 @@ class Interpretor:
 				base = json.load(open(self.defaultTemplatePath+'json/'+obj['type']+'.json'))
 				base.update(obj)
 
-				if obj['type'] == "line":
-					self.lines.append(obj)
-					# Eval expression if necessary
-					base = self.evalStatements(base)
-					# Transform element in SVG
-					self.svg.addElement(base)
+				if obj['type'] == "link":
+					self.links.append(base)
 					continue
 
 				# Transform calculated statements
-				base = self.evalCalculatedStatements(base)
+				# base = self.evalCalculatedStatements(base)
 
 				# Get position of element into grid
 				base = self.getGridPosition(base)
 
 				# Eval expression if necessary
-				base = self.evalStatements(base)
+				# base = self.evalStatements(base)
+
+				# Store hash of name in namedElements
+				hashName = hashlib.md5(base['name'].encode())
+				self.namedElements[hashName.hexdigest()] = base
 
 
 				# Transform element in SVG
 				self.svg.addElement(base)
 
-		self.svg.writeFooter()
+		for link in self.links:
+			link = self.linkPosition(link)
+			# Transform element in SVG
+			self.svgLinks.addElement(link)
+
+		self.svg.prependFragment(self.svgLinks.svgString)
 		self.writeFile('demo.svg', self.svg.__str__())
 		self.stats[Interpretor.STATS_NB_ELEMENTS] = len(self.json)
 		return self.stats
@@ -116,22 +126,35 @@ class Interpretor:
 	def getGridPosition (self, element):
 		# transform position by using GridManagement
 		# elements must have x and y parameters
-		position = GridManagement.getPosition(element)
-		element['x'] = position['x']
-		element['y'] = position['y']
+		coord = self.splitPosition(element['position'])
+		element['x'] = coord[0]
+		element['y'] = coord[1]
+		element = GridManagement.getPosition(element)
 		return element
-	
 
-	"""
-	Simple function to add content at the end of file
-	@param filePath string path to the file
-	@param content string content to write
-	"""
-	def appendInFile(self, filePath, content):
-		tmp = open(filePath, 'a')
-		tmp.write(content)
-		tmp.close
-		return
+	def splitPosition(self, position):
+		coord = position.replace(" ", "")
+		coord = coord.split(",")
+		if len(coord) != 2:
+			print '[ERROR] position is bad formatted'
+		coord = [int(value) for value in coord]
+		return coord
+
+	def linkPosition(self, link):
+		fromHashName = hashlib.md5(link['from'].encode())
+		fromElement = self.namedElements[fromHashName.hexdigest()]
+		link['xStart'] = fromElement['xCenter']
+		link['yStart'] = fromElement['yCenter']
+
+		toHashName = hashlib.md5(link['to'].encode())
+		toElement = self.namedElements[toHashName.hexdigest()]
+		link['xEnd'] = toElement['xCenter']
+		link['yEnd'] = toElement['yCenter']
+
+		return link
+		
+
+
 
 	"""
 	Simple function to add content into the file.
@@ -144,14 +167,3 @@ class Interpretor:
 		tmp.write(content)
 		tmp.close()
 		return
-
-	"""
-	Simple function read file
-	@param filePath string path to the file
-	@return content of file
-	"""
-	def readFile (self, filePath):
-		tmp = open(filePath)
-		content = tmp.read()
-		tmp.close()
-		return content

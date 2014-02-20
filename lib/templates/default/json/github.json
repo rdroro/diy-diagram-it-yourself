@@ -1,13 +1,12 @@
 {
 	"type": "github",
-	"x": 0,
-	"y": 0,
-	"realX": "##this.x##",
-	"realY": "##-952.36215+this.y##",
-	"vertical-align": "",
-	"horizontal-align": "",
-	"horizontal-middle": 0,
-	"horizontal-right": 0,
+	"position": "0,0",
+	"vertical-align": "middle",
+	"horizontal-align": "middle",
+	"horizontal-middle": 50,
+	"horizontal-right": 100,
 	"vertical-middle": 0,
-	"vertical-bottom": 0
+	"vertical-bottom": 0,
+	"xCenter": 50,
+  	"yCenter": 50
 }
