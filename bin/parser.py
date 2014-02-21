@@ -1,22 +1,16 @@
 import json
-from interpretor import Interpretor
 
 class Parser:
 	"""
 	Read DIY language and transform it in JSON
 	"""
-	def __init__ (self, str):
-		self.str = str
 
-	def parse (self):
+	@staticmethod
+	def parse (file):
 		# Transform self.str to json
 		# For the test, self.str is already json
-		self.json = json.load(self.str)
-		return self.transform()
-
-	def transform (self):
-		interpretor = Interpretor (self.json)
-		return interpretor.generate()
+		jsoned = json.load(file)
+		return jsoned
 
 		
 

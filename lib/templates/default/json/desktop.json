@@ -1,13 +1,13 @@
 {
-	"type": "database",
-	"name": "database",
+	"type": "desktop",
+	"name": "desktop",
 	"position": "0,0",
 	"vertical-align": "middle",
 	"horizontal-align": "middle",
 	"horizontal-middle": 63,
 	"horizontal-right": 126,
-	"vertical-middle": 6,
-	"vertical-bottom": 12,
+	"vertical-middle": 25,
+	"vertical-bottom": 50,
 	"xCenter": 37,
-  	"yCenter": 50
+  	"yCenter": 25
 }

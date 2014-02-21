@@ -1,30 +1,10 @@
 <g transform="translate({{x}}, {{y}})">
-    <rect
-       style="fill:#4d4d4d;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       width="74"
-       height="20"
-       x="0"
-       y="0"
-       rx="5"
-       ry="5" />
-       <rect
-       style="fill:#4d4d4d;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       width="74"
-       height="20"
-       x="0"
-       y="22"
-       rx="5"
-       ry="5" />
-       <rect
-       style="fill:#4d4d4d;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       width="74"
-       height="20"
-       x="0"
-       y="44"
-       rx="5"
-       ry="5" />
 
-       <text fill="#fff" x='37' y='85' style='text-anchor: middle' font-family="Sans" font-size="12px">
-			{{name}}
-		</text>
-  </g>
+      <rect style="fill:#4d4d4d;fill-opacity:1;fill-rule:nonzero;stroke:none" width="74" height="20" x="0" y="0" rx="5" ry="5" />
+      <rect style="fill:#4d4d4d;fill-opacity:1;fill-rule:nonzero;stroke:none" width="74" height="20" x="0" y="22" rx="5" ry="5" />
+      <rect style="fill:#4d4d4d;fill-opacity:1;fill-rule:nonzero;stroke:none" width="74" height="20" x="0" y="44" rx="5" ry="5" />
+
+      <text fill="#fff" x='37' y='85' style='text-anchor: middle' font-family="Sans" font-size="12px">
+            <![CDATA[ {{name}} ]]>
+      </text>
+</g>

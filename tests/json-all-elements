@@ -27,5 +27,15 @@
 		"type": "gplus",
 		"name": "gplus",
 		"position": "1, 1"
+	},
+	{
+		"type": "server",
+		"name": "server",
+		"position": "2, 1"
+	},
+	{
+		"type": "desktop",
+		"name": "desktop",
+		"position": "3, 1"
 	}
 ]

@@ -2,6 +2,7 @@ import os
 import json
 import re
 import hashlib
+from HTMLParser import HTMLParser
 from gridManagement import GridManagement
 from svgRender import SvgRender
 
@@ -41,7 +42,8 @@ class Interpretor:
 	Parse Json included in constructor to generate diagrams
 	"""
 	def generate (self):
-
+		# HTML parse
+		htmlParser = HTMLParser()
 		# self.writeHeader()
 		for obj in self.json:
 			if not obj['type'] in self.elements:
@@ -51,18 +53,19 @@ class Interpretor:
 				base = json.load(open(self.defaultTemplatePath+'json/'+obj['type']+'.json'))
 				base.update(obj)
 
+				
+
 				if obj['type'] == "link":
+					base['from'] = base['from'].encode("utf_8", 'xmlcharrefreplace')
+					base['to']= base['to'].encode("utf_8", 'xmlcharrefreplace')
 					self.links.append(base)
 					continue
 
-				# Transform calculated statements
-				# base = self.evalCalculatedStatements(base)
+				base['name'] = base['name'].encode("utf_8", 'xmlcharrefreplace')
 
 				# Get position of element into grid
-				base = self.getGridPosition(base)
 
-				# Eval expression if necessary
-				# base = self.evalStatements(base)
+				base = self.getGridPosition(base)
 
 				# Store hash of name in namedElements
 				hashName = hashlib.md5(base['name'].encode())
@@ -78,45 +81,12 @@ class Interpretor:
 			self.svgLinks.addElement(link)
 
 		self.svg.prependFragment(self.svgLinks.svgString)
-		self.writeFile('demo.svg', self.svg.__str__())
 		self.stats[Interpretor.STATS_NB_ELEMENTS] = len(self.json)
-		return self.stats
 
-	"""
-	Transform each calculated statements identified by ##(.*)##
-
-	element -- a dictionnary of one element
-	@return dictionnary element passed in parameter with eval calculated statements 
-	"""
-	def evalCalculatedStatements(self, element):
-		for key, value in element.iteritems():
-			if (key != 'type'):
-				# if value is an expression (identified by ##($)##)
-				if not re.match('##(.*)##', value.__str__()) is None:
-					value = value.__str__().replace('#', '')
-					references = re.findall('(this\.([a-zA-Z0-9_]*))', value)
-
-					# Transform each this.$ to element['$']
-					for ref in references:
-						value = value.__str__().replace(ref[0], "element['"+ref[1]+"']")
-				
-				element[key] = value
-		return element
-
-	"""
-	Evaluate each expression in value element containing 'element[]'' expression.
-	Return the same element in parameter with evaluated expression
-
-	element -- JSON object representing an element in the diagram
-	"""
-	def evalStatements(self, element):
-		for key, value in element.iteritems():
-			if re.findall("element\['.*'\]", value.__str__()):
-				value = eval(value)
-				element[key] = value
-		return element
-
-
+		r = {}
+		r['stats'] = self.stats
+		r['diy'] = self.svg.__str__()
+		return r
 
 	"""
 	Transform grid position into pixel position using GridManagement
@@ -142,28 +112,21 @@ class Interpretor:
 
 	def linkPosition(self, link):
 		fromHashName = hashlib.md5(link['from'].encode())
-		fromElement = self.namedElements[fromHashName.hexdigest()]
+		try:
+			fromElement = self.namedElements[fromHashName.hexdigest()]
+		except Exception: 
+			raise Exception("[ERROR] Link from element not found: "+link['from'])
+
 		link['xStart'] = fromElement['xCenter']
 		link['yStart'] = fromElement['yCenter']
 
 		toHashName = hashlib.md5(link['to'].encode())
-		toElement = self.namedElements[toHashName.hexdigest()]
+		try:
+			toElement = self.namedElements[toHashName.hexdigest()]
+		except Exception:
+			raise Exception("[ERROR] Link to element not found: "+link['to'])
+			sts
 		link['xEnd'] = toElement['xCenter']
 		link['yEnd'] = toElement['yCenter']
 
 		return link
-		
-
-
-
-	"""
-	Simple function to add content into the file.
-	delete all previous content
-	@param filePath string path to the file
-	@param content string content to write
-	"""
-	def writeFile(self, filePath, content):
-		tmp = open(filePath, 'w')
-		tmp.write(content)
-		tmp.close()
-		return

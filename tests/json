@@ -1,34 +1,36 @@
 [
   {
+    "type": "desktop"
+  },
+  {
     "type": "box",
-    "name": "DIY binary"
+    "name": "DIY program",
+    "position": "1,0"
   },
   {
     "type": "box",
     "name": "Parser",
-    "position": "1,0",
-    "horizontal-align": "right"
+    "position": "2,0"
   },
    {
     "type": "box",
     "name": "Interpretor",
-    "position": "1,1"
+    "position": "2,1"
   },
    {
     "type": "box",
     "name": "GridManagement",
-    "position": "2,1"
+    "position": "3,0"
+  },
+  {
+    "type": "box",
+    "name": "SvgRender",
+    "position": "3,1"
   },
   {
     "type": "circle",
     "name": "Diagram",
-    "position": "2,2"
-  },
-
-  {
-    "type": "database",
-    "name": "MySQL",
-    "position": "0,1"
+    "position": "1,2"
   },
   {
     "type": "github",
@@ -39,12 +41,17 @@
   },
   {
     "type": "link",
-    "from": "DIY binary",
+    "from": "desktop",
+    "to": "DIY program"
+  },
+  {
+    "type": "link",
+    "from": "DIY program",
     "to": "Parser"
   },
-    {
+  {
     "type": "link",
-    "from": "Parser",
+    "from": "DIY program",
     "to": "Interpretor"
   },
   {
@@ -54,7 +61,12 @@
   },
   {
     "type": "link",
-    "from": "Interpretor",
+    "from": "DIY program",
     "to": "Diagram"
+  },
+  {
+    "type": "link",
+    "from": "Interpretor",
+    "to": "SvgRender"
   }
 ]

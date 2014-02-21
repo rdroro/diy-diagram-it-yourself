@@ -1,7 +1,7 @@
 <g font-family="Sans" font-size="12px" transform="translate({{x}}, {{y}})" >
 	<rect x="0" y="0" width='148px' height='48px' rx="5" ry="5" style='fill: #555; stroke: #ffffff; stroke-width: 2'/>
 	<text fill="#fff" x='75' y='28' style='text-anchor: middle'>
-			{{name}}
+		<![CDATA[ {{name}} ]]>			
 	</text>
 </g>
 

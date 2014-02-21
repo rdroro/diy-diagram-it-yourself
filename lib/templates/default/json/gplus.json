@@ -3,10 +3,10 @@
 	"position": "0,0",
 	"vertical-align": "middle",
 	"horizontal-align": "middle",
-	"horizontal-middle": 50,
-	"horizontal-right": 100,
-	"vertical-middle": 0,
-	"vertical-bottom": 0,
-	"xCenter": 50,
-	"yCenter": 50
+	"horizontal-middle": 60,
+	"horizontal-right": 120,
+	"vertical-middle": 10,
+	"vertical-bottom": 20,
+	"xCenter": 40,
+	"yCenter": 40
 }
