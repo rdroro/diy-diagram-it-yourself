@@ -69,7 +69,9 @@ def start(input_file, output_file):
 		writeFile(output_file, document.__str__())
 		markdown.close()
 	except exception.NotJSONException as e:
-		printError("JSON in input is not valid")
+		printError("JSON in input is not valid", 3001)
+	except exception.MalFomattedPositionException as e:
+		printError("Mal Formatted Position: "+e.__str__(), 3002)
 	except Exception as e: 
 		print e
 		printError('Unknow', 2000)

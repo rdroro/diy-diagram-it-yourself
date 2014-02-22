@@ -3,6 +3,7 @@ import json
 import re
 import hashlib
 from HTMLParser import HTMLParser
+import exception
 from gridManagement import GridManagement
 from svgRender import SvgRender
 
@@ -10,10 +11,10 @@ class Interpretor:
 
 	STATS_NB_ELEMENTS="nb_elements"
 
-	""" 
-	Change JSON str to svg diagram
-	"""
 	def __init__(self, json, libpath):
+		""" 
+		Change JSON str to svg diagram
+		"""
 		# self.json contains all elements write by user in dict format
 		self.json = json
 		# @todo Externalize lib path	
@@ -38,10 +39,11 @@ class Interpretor:
 		self.svgLinks = SvgRender(self.defaultTemplatePath)
 
 
-	"""
-	Parse Json included in constructor to generate diagrams
-	"""
+	
 	def generate (self):
+		"""
+		Parse Json included in constructor to generate diagrams
+		"""
 		# HTML parse
 		htmlParser = HTMLParser()
 		# self.writeHeader()
@@ -53,8 +55,7 @@ class Interpretor:
 				base = json.load(open(self.defaultTemplatePath+'/json/'+obj['type']+'.json'))
 				base.update(obj)
 
-				
-
+				# Links have a different behaviour than other elements
 				if obj['type'] == "link":
 					base['from'] = base['from'].encode("utf_8", 'xmlcharrefreplace')
 					base['to']= base['to'].encode("utf_8", 'xmlcharrefreplace')
@@ -64,17 +65,16 @@ class Interpretor:
 				base['name'] = base['name'].encode("utf_8", 'xmlcharrefreplace')
 
 				# Get position of element into grid
-
 				base = self.getGridPosition(base)
 
 				# Store hash of name in namedElements
 				hashName = hashlib.md5(base['name'].encode())
 				self.namedElements[hashName.hexdigest()] = base
 
-
-				# Transform element in SVG
+				# Transform JSON element to SVG
 				self.svg.addElement(base)
 
+		# links treatments
 		for link in self.links:
 			link = self.linkPosition(link)
 			# Transform element in SVG
@@ -88,12 +88,16 @@ class Interpretor:
 		r['diy'] = self.svg.__str__()
 		return r
 
-	"""
-	Transform grid position into pixel position using GridManagement
-	@param element a dictionnary of one element
-	@return dictonnary element passed in parameter with pixel value for x and y
-	"""
+	
 	def getGridPosition (self, element):
+		"""
+		Transform grid position into pixel position using GridManagement
+
+		Args:
+			element: a dictionnary of one element
+		Returns:
+			dictonnary element passed in parameter with pixel value for x and y
+		"""
 		# transform position by using GridManagement
 		# elements must have x and y parameters
 		coord = self.splitPosition(element['position'])
@@ -102,7 +106,23 @@ class Interpretor:
 		element = GridManagement.getPosition(element)
 		return element
 
+
 	def splitPosition(self, position):
+		"""
+		Parse "x,y" string and return list where 0 is x and 1 is y int value
+
+		Args:
+			position: a string wich can match this regex: [1-9]\d*\s*,[1-9]\d*
+		Returns:
+			A list where [0] represents integer x value and [1] represents integer y value
+		Raises:
+			exception.MalFomattedPositionException when position argument is not valid
+
+		"""
+		position = position.strip()
+		if re.search("\d+\s*,\s*\d+", position) is None:
+			raise exception.MalFomattedPositionException(position)
+
 		coord = position.replace(" ", "")
 		coord = coord.split(",")
 		if len(coord) != 2:
@@ -111,6 +131,12 @@ class Interpretor:
 		return coord
 
 	def linkPosition(self, link):
+		"""
+		Set start and stop position for a link by getting from and to psoition element
+
+		Args:
+			link: a dictionnary representing one link
+		"""
 		fromHashName = hashlib.md5(link['from'].encode())
 		try:
 			fromElement = self.namedElements[fromHashName.hexdigest()]
