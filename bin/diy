@@ -7,23 +7,26 @@ main program to transform DIY language in diagramm
 
 import sys
 import getopt
-from os import path
+from os import path, environ, pardir
 from time import time
+import exception
 from parser import Parser
 from interpretor import Interpretor
 
 
 version = '0.1.0Alpha'
+PROGRAM_DIR = ""
 
 
 def usage():
-	print '================'
-	print 'Usage: diy is a tool to transform DIY language in diagram'
-	print 'diy [path_to_diy_file] options:'
-	print '\t-h, --help: Display this help'
-	print '\t-v, --version: print diy version'
-	print '\t-o, --output=: path to output svg file'
-	print '\t-i, --input=: path to input diy file'
+	print 'Usage: diy [-v|--version] [-h|--help] -i path_to_diy_file [<ARGS>]:'
+	print ''
+	print '\t-h, --help \tDisplay this help'
+	print '\t-v, --version \tprint diy version'
+	print '\t-i, --input= \tpath to input diy file'
+	print ''
+	print 'Available ARGS'
+	print '\t-o, --output= \tpath name for output svg file'
 	print ''
 	return
 
@@ -39,25 +42,38 @@ def writeFile(filePath, content):
 	tmp.close()
 	return
 
+def printError(msg, exit_code):
+	print "[ERROR] "+msg
+	sys.exit(exit_code)
+
 
 def start(input_file, output_file):
 
 	if not path.exists(input_file):
-		print '[ERROR] file: '+input_file+' does not exist'
 		usage()
+		printError("Input file does not exist: "+input_file)
 		sys.exit(110)
 
 	markdown = open(input_file)
 
-	json = Parser.parse(markdown)
+	stats = ""
 
-	interpretor = Interpretor(json)
-	result = interpretor.generate()
+	try:
+		json = Parser.parse(markdown)
 
-	stats = result['stats']
-	document = result['diy']
-	writeFile(output_file, document.__str__())
-	markdown.close()
+		interpretor = Interpretor(json, PROGRAM_DIR+"/lib")
+		result = interpretor.generate()
+
+		stats = result['stats']
+		document = result['diy']
+		writeFile(output_file, document.__str__())
+		markdown.close()
+	except exception.NotJSONException as e:
+		printError("JSON in input is not valid")
+	except Exception as e: 
+		print e
+		printError('Unknow')
+
 	return stats
 
 
@@ -94,7 +110,6 @@ def main():
 			usage()
 			sys.exit(0)
 		elif opt in ('-o', '--output'):
-			print arg
 			output_file = arg
 		elif opt in ('-v', '--version'):
 			print 'diy version '+version
@@ -118,4 +133,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+	# Initialize src directory and PROGRAM_DIR
+	srcdir = path.dirname(sys.argv[0])
+	sys.path.append(srcdir)
+	PROGRAM_DIR = path.abspath(path.join(srcdir, pardir))
+	main()

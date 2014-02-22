@@ -13,12 +13,12 @@ class Interpretor:
 	""" 
 	Change JSON str to svg diagram
 	"""
-	def __init__(self, json):
+	def __init__(self, json, libpath):
 		# self.json contains all elements write by user in dict format
 		self.json = json
 		# @todo Externalize lib path	
-		self.libPath = '../lib/'
-		self.defaultTemplatePath = self.libPath+'templates/default/'	
+		self.libPath = libpath
+		self.defaultTemplatePath = self.libPath+'/templates/default/'	
 
 		# List all available element in lib path
 		self.elements = os.listdir(self.defaultTemplatePath+'json')

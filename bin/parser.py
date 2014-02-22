@@ -1,4 +1,5 @@
 import json
+import exception
 
 class Parser:
 	"""
@@ -7,9 +8,23 @@ class Parser:
 
 	@staticmethod
 	def parse (file):
-		# Transform self.str to json
-		# For the test, self.str is already json
-		jsoned = json.load(file)
+		""""
+		Parse file - a file object - to transform DIY language to JSONArray
+
+		Args:
+			file: file object containing DIY language
+		Returns:
+			the parsed input. JSONArray
+		Raises:
+			NotJSONException if input is not valid JSON input
+
+		"""
+		jsoned = ""
+		try:
+			jsoned = json.load(file)
+		except Exception:
+			raise exception.NotJSONException("")
+
 		return jsoned
 
 		
