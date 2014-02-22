@@ -18,10 +18,10 @@ class Interpretor:
 		self.json = json
 		# @todo Externalize lib path	
 		self.libPath = libpath
-		self.defaultTemplatePath = self.libPath+'/templates/default/'	
+		self.defaultTemplatePath = self.libPath+'/templates/default'	
 
 		# List all available element in lib path
-		self.elements = os.listdir(self.defaultTemplatePath+'json')
+		self.elements = os.listdir(self.defaultTemplatePath+'/json')
 		# Remove extension in list
 		self.elements = [elt.replace('.json', '') for elt in self.elements]
 
@@ -50,7 +50,7 @@ class Interpretor:
 				# Element is missing in lib/.../json folder
 				print "[ERROR] Unknown element: "+obj['type']
 			else:
-				base = json.load(open(self.defaultTemplatePath+'json/'+obj['type']+'.json'))
+				base = json.load(open(self.defaultTemplatePath+'/json/'+obj['type']+'.json'))
 				base.update(obj)
 
 				

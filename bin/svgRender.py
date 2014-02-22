@@ -47,7 +47,7 @@ class SvgRender:
 	Return svg header saved in self.libPath/svg/partials/header.tpl
 	"""
 	def getHeader(self):
-		header = open(self.libPath+'svg/partials/header.tpl')
+		header = open(self.libPath+'/svg/partials/header.tpl')
 		headerStr = header.read()
 		header.close()
 		return headerStr

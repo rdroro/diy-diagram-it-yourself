@@ -14,7 +14,7 @@ from parser import Parser
 from interpretor import Interpretor
 
 
-version = '0.1.0Alpha'
+VERSION = '0.1.0Alpha'
 PROGRAM_DIR = ""
 
 
@@ -72,7 +72,7 @@ def start(input_file, output_file):
 		printError("JSON in input is not valid")
 	except Exception as e: 
 		print e
-		printError('Unknow')
+		printError('Unknow', 2000)
 
 	return stats
 
@@ -109,17 +109,20 @@ def main():
 		if opt in ('-h', '--help'):
 			usage()
 			sys.exit(0)
+
+		elif opt in ('-v', '--version'):
+			print 'Diy '+VERSION
+			sys.exit(0)
+
 		elif opt in ('-o', '--output'):
 			output_file = arg
-		elif opt in ('-v', '--version'):
-			print 'diy version '+version
 			sys.exit(0)
+
 		elif opt in ('-i', '--input'):
 			input_file = arg
 			INPUT = arg
+
 		else:
-			# first argument must be input file
-			# @todo
 			usage()
 			sys.exit(9000)
 	
