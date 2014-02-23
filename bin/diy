@@ -98,7 +98,7 @@ def main():
 		sys.exit(100)
 
 
-	output_file = "demo.svg"
+	output_file = "diagram.svg"
 	try:
 		opts, args = getopt.getopt(argv, ":hi:vo:", ['help', 'version', 'output=', 'input='])
 	except getopt.GetoptError as err:
