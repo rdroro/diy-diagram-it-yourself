@@ -42,6 +42,9 @@ class Interpretor:
 	def generate (self):
 		"""
 		Parse Json included in constructor to generate diagrams
+
+		Raises:
+			exception.ElementNotFoundException: when a type element is unknown
 		"""
 		# self.writeHeader()
 		for obj in self.json:
@@ -61,8 +64,10 @@ class Interpretor:
 					self.links.append(base)
 					continue
 
-				base['name'] = base['name'].encode("utf-8")
 
+				base['name'] = base['name'].encode("utf-8")
+				if not base['link'] is None:
+					self.transformEmbeddedLink(base)
 
 				# Get position of element into grid
 				base = self.getGridPosition(base)
@@ -123,12 +128,34 @@ class Interpretor:
 		if re.search("\d+\s*,\s*\d+", position) is None:
 			raise exception.MalFomattedPositionException(position)
 
-		coord = position.replace(" ", "")
+		regex = re.compile('\s')
+		coord = regex.sub("", position)
 		coord = coord.split(",")
 		if len(coord) != 2:
-			print '[ERROR] position is bad formatted'
+			raise exception.MalFomattedPositionException(position)
 		coord = [int(value) for value in coord]
 		return coord
+
+	def transformEmbeddedLink(self, element):
+		"""
+		Transform embedded link to normal link
+
+		Args:
+			element: A element dictionnary
+		"""
+		element['link'] = element['link'].encode('utf-8')
+		toElements = element['link'].split(',')
+		ref = json.load(open(self.defaultTemplatePath+'/json/link.json'))
+		for toElt in toElements:
+			toElt = toElt.strip()
+			generatedLink = ref.copy()
+			generatedLink['type'] = "link"
+			generatedLink['from'] = element['name']
+			generatedLink['to'] = toElt
+			self.links.append(generatedLink)
+
+
+
 
 	def linkPosition(self, link):
 		"""
@@ -152,7 +179,7 @@ class Interpretor:
 		try:
 			toElement = self.namedElements[toHashName.hexdigest()]
 		except Exception:
-			raise Exception("[ERROR] Link to element not found: "+link['to'])
+			raise exception.NameNotFoundException(link['to'])
 			sts
 		link['xEnd'] = toElement['xCenter']
 		link['yEnd'] = toElement['yCenter']

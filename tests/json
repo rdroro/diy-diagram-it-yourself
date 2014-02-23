@@ -1,15 +1,17 @@
 [
   {
-    "type": "desktop"
+    "type": "desktop",
+    "link": "DIY program"
   },
   {
     "type": "box",
     "name": "DIY program",
-    "position": "1,0"
+    "position": "1,0",
+    "link": "Diagram, Interpretor,    Parser  "
   },
   {
     "type": "box",
-    "name": "Parser: #!?é",
+    "name": "Parser",
     "position": "2,0"
   },
    {
@@ -41,28 +43,8 @@
   },
   {
     "type": "link",
-    "from": "desktop",
-    "to": "DIY program"
-  },
-  {
-    "type": "link",
-    "from": "DIY program",
-    "to": "Parser: #!?é"
-  },
-  {
-    "type": "link",
-    "from": "DIY program",
-    "to": "Interpretor"
-  },
-  {
-    "type": "link",
     "from": "Interpretor",
     "to": "GridManagement"
-  },
-  {
-    "type": "link",
-    "from": "DIY program",
-    "to": "Diagram"
   },
   {
     "type": "link",

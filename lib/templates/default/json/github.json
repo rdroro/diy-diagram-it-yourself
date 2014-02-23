@@ -8,5 +8,6 @@
 	"vertical-middle": 10,
 	"vertical-bottom": 20,
 	"xCenter": 40,
-  	"yCenter": 40
+  	"yCenter": 40,
+  	"link": null
 }

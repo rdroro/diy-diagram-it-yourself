@@ -123,7 +123,6 @@ def main():
 
 		elif opt in ('-o', '--output'):
 			output_file = arg
-			sys.exit(0)
 
 		elif opt in ('-i', '--input'):
 			input_file = arg
