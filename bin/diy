@@ -9,6 +9,7 @@ import sys
 import getopt
 from os import path, environ, pardir
 from time import time
+import codecs
 import exception
 from parser import Parser
 from interpretor import Interpretor
@@ -37,7 +38,7 @@ delete all previous content
 @param content string content to write
 """
 def writeFile(filePath, content):
-	tmp = open(filePath, 'w')
+	tmp = codecs.open(filePath, 'w', "utf-8")
 	tmp.write(content)
 	tmp.close()
 	return
@@ -54,7 +55,7 @@ def start(input_file, output_file):
 		printError("Input file does not exist: "+input_file)
 		sys.exit(110)
 
-	markdown = open(input_file)
+	markdown = codecs.open(input_file, 'r', 'utf-8')
 
 	stats = ""
 
@@ -66,15 +67,19 @@ def start(input_file, output_file):
 
 		stats = result['stats']
 		document = result['diy']
-		writeFile(output_file, document.__str__())
+		writeFile(output_file, document)
 		markdown.close()
 	except exception.NotJSONException as e:
 		printError("JSON in input is not valid", 3001)
 	except exception.MalFomattedPositionException as e:
 		printError("Mal Formatted Position: "+e.__str__(), 3002)
-	except Exception as e: 
-		print e
-		printError('Unknow', 2000)
+	except exception.ElementNotFoundException as e:
+		printError('Element not found in lib: '+e.__str__(), 3003)
+	except exception.NameNotFoundException as e:
+		printError("Fail to retrieve linked element: "+e.__str__(), 3004)
+	# # except Exception as e: 
+	# # 	print e
+	# 	printError('Unknow', 2000)
 
 	return stats
 

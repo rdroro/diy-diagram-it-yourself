@@ -2,7 +2,6 @@ import os
 import json
 import re
 import hashlib
-from HTMLParser import HTMLParser
 import exception
 from gridManagement import GridManagement
 from svgRender import SvgRender
@@ -44,31 +43,32 @@ class Interpretor:
 		"""
 		Parse Json included in constructor to generate diagrams
 		"""
-		# HTML parse
-		htmlParser = HTMLParser()
 		# self.writeHeader()
 		for obj in self.json:
 			if not obj['type'] in self.elements:
 				# Element is missing in lib/.../json folder
-				print "[ERROR] Unknown element: "+obj['type']
+				raise exception.ElementNotFoundException(obj['type'])
 			else:
 				base = json.load(open(self.defaultTemplatePath+'/json/'+obj['type']+'.json'))
 				base.update(obj)
+				
+				# base['name'] = base['name'].decode('utf8', 'ignore')
 
 				# Links have a different behaviour than other elements
 				if obj['type'] == "link":
-					base['from'] = base['from'].encode("utf_8", 'xmlcharrefreplace')
-					base['to']= base['to'].encode("utf_8", 'xmlcharrefreplace')
+					base['from'] = base['from'].encode("utf8")
+					base['to']= base['to'].encode("utf8")
 					self.links.append(base)
 					continue
 
-				base['name'] = base['name'].encode("utf_8", 'xmlcharrefreplace')
+				base['name'] = base['name'].encode("utf-8")
+
 
 				# Get position of element into grid
 				base = self.getGridPosition(base)
 
 				# Store hash of name in namedElements
-				hashName = hashlib.md5(base['name'].encode())
+				hashName = hashlib.md5(base['name'])
 				self.namedElements[hashName.hexdigest()] = base
 
 				# Transform JSON element to SVG
@@ -132,21 +132,23 @@ class Interpretor:
 
 	def linkPosition(self, link):
 		"""
-		Set start and stop position for a link by getting from and to psoition element
+		Set start and stop position for a link by getting from and to position element
 
 		Args:
 			link: a dictionnary representing one link
+		Returns:
+			dictionnary link element with start and end position in pixel
 		"""
-		fromHashName = hashlib.md5(link['from'].encode())
+		fromHashName = hashlib.md5(link['from'])
 		try:
 			fromElement = self.namedElements[fromHashName.hexdigest()]
 		except Exception: 
-			raise Exception("[ERROR] Link from element not found: "+link['from'])
+			raise exception.NameNotFoundException(link['from'])
 
 		link['xStart'] = fromElement['xCenter']
 		link['yStart'] = fromElement['yCenter']
 
-		toHashName = hashlib.md5(link['to'].encode())
+		toHashName = hashlib.md5(link['to'])
 		try:
 			toElement = self.namedElements[toHashName.hexdigest()]
 		except Exception:

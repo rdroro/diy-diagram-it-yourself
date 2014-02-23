@@ -9,7 +9,7 @@
   },
   {
     "type": "box",
-    "name": "Parser",
+    "name": "Parser: #!?é",
     "position": "2,0"
   },
    {
@@ -47,7 +47,7 @@
   {
     "type": "link",
     "from": "DIY program",
-    "to": "Parser"
+    "to": "Parser: #!?é"
   },
   {
     "type": "link",

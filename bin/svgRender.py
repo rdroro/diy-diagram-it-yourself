@@ -32,7 +32,7 @@ class SvgRender:
 		eltFile.close
 		for key, value in element.iteritems():
 			if (key != 'type'):
-				elt = elt.replace('{{'+key.__str__()+'}}', value.__str__())
+				elt = elt.replace('{{'+key.__str__()+'}}', value.__str__().decode("utf-8"))
 		self.svgString += "\n"+elt
 
 	
