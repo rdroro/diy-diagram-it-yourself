@@ -50,8 +50,8 @@ class Parser:
 	def load(file):
 		jsoned = ""
 		try:
-			jsoned = json.load(file, "utf-8")
-		except Exception:
+			jsoned = json.loads(file)
+		except Exception as e:
 			raise exception.NotJSONException("")
 
 		return jsoned
