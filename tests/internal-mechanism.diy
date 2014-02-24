@@ -1,0 +1,15 @@
+desktop(link: DIY program)
+
+box(name: DIY program; position: 1,0; link: Diagram, Parseré, Interpretor)
+
+circle(name: Diagram; position: 1,2)
+
+box(name: Parseré; position: 2, 0)
+
+box(name: Interpretor; position: 2, 1; link: GridManagement, SvgRender)
+
+box(name: GridManagement; position: 3, 0)
+
+box(name: SvgRender; position: 3, 1)
+
+github(name: rdroro; position: 3,3)

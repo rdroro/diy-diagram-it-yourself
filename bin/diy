@@ -48,7 +48,7 @@ def printError(msg, exit_code):
 	sys.exit(exit_code)
 
 
-def start(input_file, output_file):
+def start(input_file, output_file, jsoninput):
 
 	if not path.exists(input_file):
 		usage()
@@ -60,7 +60,10 @@ def start(input_file, output_file):
 	stats = ""
 
 	try:
-		json = Parser.parse(markdown)
+		if jsoninput:
+			json = Parser.load(markdown)
+		else:
+			json = Parser.parse(markdown.read().encode("utf-8"))
 
 		interpretor = Interpretor(json, PROGRAM_DIR+"/lib")
 		result = interpretor.generate()
@@ -77,6 +80,8 @@ def start(input_file, output_file):
 		printError('Element not found in lib: '+e.__str__(), 3003)
 	except exception.NameNotFoundException as e:
 		printError("Fail to retrieve linked element: "+e.__str__(), 3004)
+	except exception.NoElementFoundExeception:
+		printError("Your input file does not contain any elements", 3005)
 	# # except Exception as e: 
 	# # 	print e
 	# 	printError('Unknow', 2000)
@@ -85,12 +90,12 @@ def start(input_file, output_file):
 
 
 def printStats(stats):
-	print " ------------------------- "
-	print "|          Stats          |"
-	print " ------------------------- "
+	print " --------------------------------------- "
+	print "|               Stats                   |"
+	print " --------------------------------------- "
 	for key, value in stats.iteritems():
-		print "|   "+key+"   |   "+value.__str__()+"   |"
-		print " ------------------------- "
+		print "|\t"+key+"\t|\t"+value.__str__()+"\t|"
+		print " --------------------------------------- "
 
 
 def main():
@@ -104,8 +109,9 @@ def main():
 
 
 	output_file = "diagram.svg"
+	jsoninput = False
 	try:
-		opts, args = getopt.getopt(argv, ":hi:vo:", ['help', 'version', 'output=', 'input='])
+		opts, args = getopt.getopt(argv, ":hi:vo:", ['help', 'version', 'output=', 'input=', 'jsoninput'])
 	except getopt.GetoptError as err:
 		print ''
 		print err
@@ -128,11 +134,14 @@ def main():
 			input_file = arg
 			INPUT = arg
 
+		elif opt in ('--jsoninput'):
+			jsoninput = True
+
 		else:
 			usage()
 			sys.exit(9000)
 	
-	stats = start(input_file, output_file)
+	stats = start(input_file, output_file, jsoninput)
 	end_time = time()
 	during_time = end_time - start_time
 

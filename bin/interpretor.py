@@ -9,6 +9,7 @@ from svgRender import SvgRender
 class Interpretor:
 
 	STATS_NB_ELEMENTS="nb_elements"
+	STATS_NB_LINKS="nb_links"
 
 	def __init__(self, json, libpath):
 		""" 
@@ -54,18 +55,16 @@ class Interpretor:
 			else:
 				base = json.load(open(self.defaultTemplatePath+'/json/'+obj['type']+'.json'))
 				base.update(obj)
-				
-				# base['name'] = base['name'].decode('utf8', 'ignore')
 
 				# Links have a different behaviour than other elements
 				if obj['type'] == "link":
-					base['from'] = base['from'].encode("utf8")
-					base['to']= base['to'].encode("utf8")
+					base['from'] = base['from']
+					base['to']= base['to']
 					self.links.append(base)
 					continue
 
 
-				base['name'] = base['name'].encode("utf-8")
+				base['name'] = base['name']
 				if not base['link'] is None:
 					self.transformEmbeddedLink(base)
 
@@ -86,7 +85,8 @@ class Interpretor:
 			self.svgLinks.addElement(link)
 
 		self.svg.prependFragment(self.svgLinks.svgString)
-		self.stats[Interpretor.STATS_NB_ELEMENTS] = len(self.json)
+		self.stats[Interpretor.STATS_NB_ELEMENTS] = len(self.namedElements)
+		self.stats[Interpretor.STATS_NB_LINKS] = len(self.links)
 
 		r = {}
 		r['stats'] = self.stats
@@ -143,7 +143,7 @@ class Interpretor:
 		Args:
 			element: A element dictionnary
 		"""
-		element['link'] = element['link'].encode('utf-8')
+		element['link'] = element['link']
 		toElements = element['link'].split(',')
 		ref = json.load(open(self.defaultTemplatePath+'/json/link.json'))
 		for toElt in toElements:
