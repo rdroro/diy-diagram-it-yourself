@@ -15,7 +15,7 @@ Cool isn't it?
 
 To write your own diagrams, just follow the syntax:
 
-   ELEMENT_NAME([ATTRIBUTE: VALUE;])
+    ELEMENT_NAME([ATTRIBUTE: VALUE;])
 
 ELEMENT_NAME: is a name of the element to draw. List of available elements is here
 ATTRIBUTE: VALUE: The attribute of one element. To separate attribute:value, you need to use ';' All elements have the defaults attributes/value:
