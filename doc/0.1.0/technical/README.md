@@ -17,10 +17,11 @@ To write your own diagrams, just follow the syntax:
 
     ELEMENT_NAME([ATTRIBUTE: VALUE;])
 
-ELEMENT_NAME: is a name of the element to draw. List of available elements is here
-ATTRIBUTE: VALUE: The attribute of one element. To separate attribute:value, you need to use ';' All elements have the defaults attributes/value:
-* name: To define the name of element. This name can be drawn into the element (see Elements page to see the behavior of each element). name attributes is also used to link elements together. You can 
-* position: To define the position of an element. X and Y coordinates separated by ','. See grid.md
+ELEMENT_NAME: is a name of the element to draw. List of available elements is [here](elements.md)
+
+ATTRIBUTE: VALUE: The attribute of one element represented by key/value pairs. To separate them, you need to use ';' All elements have the defaults attributes/value:
+* name: To define the name of element. This name can be drawn into the element (cf. [Elements page](elements.md) to see the behavior of each element). name attributes is also used to link elements together.
+* position: To define the position of an element. X and Y coordinates separated by ',' See [grid.md](grid.md)
 * vertical-align: The vertical alignement of the element into the cell. Possible value: top, middle, bottom
 * horizontal-align: The horizontal alignement of the element into the cell. Possible value: left, middle, right
 
@@ -37,7 +38,7 @@ To link elements together, there is two ways. With the first one, just put the n
     box(name: DIY Program; position: 1,0)
     box(name: Other box; position: 1, 1)
 
-If for some reasons, you want to externalise link you can write
+If for some reasons, you want to externalise links you can write
 
     box(name: DIY Language)
     box(name: DIY Program; position: 1,0)
@@ -45,6 +46,6 @@ If for some reasons, you want to externalise link you can write
     link(from: DIY Language; to: DIY Program)
     link(from: DIY Language; to: Other Box)
 
-Currently, if you use link element, you need to describe all links. In fact, link element does not support multiple "to:" values separated by ';'
+Currently, if you use link element, you need to describe all links. In fact, link element does not support multiple "to:" values separated by ','
 
 Note that all links (in attribute or as an element) are evaluated after all other elements even if they are defined before.
