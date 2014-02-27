@@ -23,8 +23,16 @@ Image
 
 ## git
 
+    git(name: git; position: 0,0; vertical-align: middle; horizontal-align: middle)
+
 ## github
+
+    github(name: github; position: 0,0; vertical-align: middle; horizontal-align: middle)
 
 ## gplus
 
+    gplus(name: gplus; position: 0,0; vertical-align: middle; horizontal-align: middle)
+
 ## server
+
+    server(name: server; position: 0,0; vertical-align: middle; horizontal-align: middle)
