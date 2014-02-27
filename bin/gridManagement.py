@@ -1,3 +1,4 @@
+import exception
 
 class GridManagement:
 
@@ -31,13 +32,6 @@ class GridManagement:
 		y = element['y'] 
 		verticalAlignement = element['vertical-align'] 
 		horizontalAlignement = element['horizontal-align']
-		try:
-			x = int(x)
-			y = int(y)
-		except Exception, e:
-			# Raise personnal exception
-			print "X or Y aren't integer values"
-			return;
 
 		# Default alignement is top, top
 		verticalAlign = GridManagement.VERTICAL_TOP_ALIGN
@@ -53,9 +47,20 @@ class GridManagement:
 		if horizontalAlignement == "right":
 			horizontalAlign = element['horizontal-right']
 
+		try:
+			x = int(x)
+			y = int(y)
+			horizontalAlign = int(horizontalAlign)
+			verticalAlign = int(verticalAlign)
+			xCenter = int(element["xCenter"])
+			yCenter = int(element["yCenter"])
+		except Exception as e:
+			raise exception.NotIntegerValueException(e)
+
 		
 		element['x'] = x*GridManagement.X_SIZE+horizontalAlign
 		element['y'] = y*GridManagement.Y_SIZE+verticalAlign
-		element['xCenter'] = element['x']+element["xCenter"]
-		element['yCenter'] = element['y']+element["yCenter"]
+		# The element center move with its position
+		element['xCenter'] = element['x']+xCenter
+		element['yCenter'] = element['y']+yCenter
 		return element

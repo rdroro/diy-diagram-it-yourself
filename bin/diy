@@ -80,6 +80,8 @@ def start(input_file, output_file):
 		printError("Fail to retrieve linked element: "+e.__str__(), 3004)
 	except exception.NoElementFoundExeception:
 		printError("Your input file does not contain any elements", 3005)
+	except exception.NotIntegerValueException as e:
+		printError("Position must be integer value: "+e.__str__(), 3006)
 	# # except Exception as e: 
 	# # 	print e
 	# 	printError('Unknow', 2000)
