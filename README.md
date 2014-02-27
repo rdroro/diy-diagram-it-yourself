@@ -49,7 +49,7 @@ To test diy you can create a demo.diy file contaning this following content:
 
 and run:
 
-    diy -i path demo.diy
+    diy -i demo.diy
 
 diagram.svg is now available in your working directory.
 
