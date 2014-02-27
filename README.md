@@ -1,19 +1,41 @@
 diy-diagram-it-yourself
 =======================
 
-DIY - Diagram It Yourselft is a markdown language for describing easily the schemes in your code documentation to illustrate interaction, dependance, etc, on wiki pages or just to share diagrams with others people without specific software
+DIY - Diagram It Yourselft is a markdown language for describing easily the schemes in your code documentation to illustrate interaction, dependance, on wiki pages or just to share diagrams with others people without specific software
 
-This tools is under development. Specific markdown language are not defined yet. Currently, we use JSON to
-describe diagram
+For example draw this:
+
+![Diagram example](http://i.imgur.com/6GwJh2m.png)
+
+by writing this:
+
+    desktop(link: DIY program)
+    box(name: DIY program; position: 1,0; link: Diagram, Parser, Interpretor)
+    circle(name: Diagram; position: 1,2)
+    box(name: Parser; position: 2, 0)
+    box(name: Interpretor; position: 2, 1; link: Grid Management, SvgRender)
+    box(name: Grid Management; position: 3, 0)
+    box(name: SvgRender; position: 3, 1)
+    github(name: github logo; position: 3,3)
+
+## Philosophy
+
++ GUI sucks : I want to edit my diagram from my text editor
++ Less is more : I do not want to write a book for simple diagrams
++ It's Beautiful : I want a beautiful theme by default. Tired of ugly diagrams
++ It's Ugly : AAAH, the default theme sucks, let me make it myself
++ Code sucks : Bah, code sucks, give me a GUI
++ Cross-platform : I'm sick of files that you can't edit without installing a gas-factory
 
 ## Get Started
 
 ### Installation
 
-* Download the lastest stable version here (version = 0.1.0 will be released soon). For the dev version : [Download](https://github.com/rdroro/diy-diagram-it-yourself/archive/master.zip)
-* Unzip archive
-* If you want, you can add diy to your path:
++ Download the lastest stable version here (version = 0.1.0 will be released soon). For the dev version : [Download](https://github.com/rdroro/diy-diagram-it-yourself/archive/master.zip)
++ Unzip archive
++ the tools is into diy-diagram-it-yourself/bin/diy
 
+If you want, you can add diy to your path
 
     export PATH=${PATH}:/path/to/unizpped-archive/diy-diagram-it-yourself/bin
 
@@ -31,16 +53,6 @@ and run:
 
 diagram.svg is now available in your working directory.
 
-
-
-## Philosophy
-
-+ GUI sucks : I want to edit my diagram from my text editor
-+ Less is more : I do not want to write a book for simple diagrams
-+ It's Beautiful : I want a beautiful theme by default. Tired of ugly diagrams
-+ It's Ugly : AAAH, the default theme sucks, let me make it myself
-+ Code sucks : Bah, code sucks, give me a GUI
-+ Cross-platform : I'm sick of files that you can't edit without installing a gas-factory
 
 ## License
 
