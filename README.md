@@ -41,7 +41,7 @@ If you want, you can add diy to your path
 
 ### First test
 
-To test diy you can create a demo.diy file contaning this following content:
+To test diy you can create a demo.diy file contaning:
 
     box(name: DIY Language; position: 0,0; link: DIY Program)
     circle(name: DIY Program; position: 1,0; link: SVG Diagram)
