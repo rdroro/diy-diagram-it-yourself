@@ -16,7 +16,7 @@ by writing this:
     box(name: Interpretor; position: 2, 1; link: Grid Management, SvgRender)
     box(name: Grid Management; position: 3, 0)
     box(name: SvgRender; position: 3, 1)
-    github(name: github logo; position: 3,3)
+    github(position: 3,3)
 
 ## Philosophy
 
