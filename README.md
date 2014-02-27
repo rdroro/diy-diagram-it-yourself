@@ -5,7 +5,7 @@ DIY - Diagram It Yourselft is a markdown language for describing easily the sche
 
 For example draw this:
 
-![Diagram example](http://i.imgur.com/6GwJh2m.png)
+![Diagram example](http://i.imgur.com/B5VlgIF.png)
 
 by writing this:
 
