@@ -9,7 +9,7 @@ DIY Language is pretty simple. It looks like:
 
 What this code will generate ? This following diagram:
 
-![Simple diamgram](http://i.imgur.com/bdgz9Om.png)
+![Simple diamgram](http://i.imgur.com/fRAhi9c.png)
 
 Cool isn't it?
 
