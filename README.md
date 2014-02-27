@@ -35,7 +35,7 @@ by writing this:
 + Unzip archive
 + the tools is into diy-diagram-it-yourself/bin/diy
 
-If you want, you can add diy to your path
+If you want to user DIY everywhere just add it into your path:
 
     export PATH=${PATH}:/path/to/unizpped-archive/diy-diagram-it-yourself/bin
 
