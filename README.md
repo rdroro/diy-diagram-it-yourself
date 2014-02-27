@@ -18,9 +18,17 @@ describe diagram
 
 ### First test
 
-To test diy you can create a file contaning this following content:
+To test diy you can create a demo.diy file contaning this following content:
 
-    
+    box(name: DIY Language; position: 0,0; link: DIY Program)
+    circle(name: DIY Program; position: 1,0; link: SVG Diagram)
+    box(name: SVG Diagram; position: 2, 0 )
+
+and run:
+
+    diy -i path demo.diy
+
+diagram.svg is now available in your working directory.
 
 
 
