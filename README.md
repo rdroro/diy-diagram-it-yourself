@@ -14,6 +14,7 @@ describe diagram
 * Unzip archive
 * If you want, you can add diy to your path:
 
+
     export PATH=${PATH}:/path/to/unizpped-archive/diy-diagram-it-yourself/bin
 
 ### First test
@@ -41,9 +42,26 @@ diagram.svg is now available in your working directory.
 + Code sucks : Bah, code sucks, give me a GUI
 + Cross-platform : I'm sick of files that you can't edit without installing a gas-factory
 
-# Todo
+## License
 
-* Rewrite code documentation using real convention
-* Rewrite Unit-test
-* Think of code organization: Done but can be improve
+The MIT License (MIT)
+
+Copyright (c) 2013-2014 Romain Dubos
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
