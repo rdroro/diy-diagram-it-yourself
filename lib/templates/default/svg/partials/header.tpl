@@ -3,7 +3,7 @@
 	"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
 <svg>
-	<rect width='100%' height='100%' fill='#888'/>
+	<rect width='100%' height='100%' fill='#118798'/>
 
 
 

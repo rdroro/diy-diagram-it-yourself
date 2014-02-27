@@ -1,5 +1,5 @@
 <g transform="translate({{x}}, {{y}})" font-family="Sans" font-size="12px">
-	<circle cx="50" cy="50" r="49" stroke="#fff" stroke-width="2" fill="#3f74e9" />
+	<circle cx="50" cy="50" r="49" stroke="#ddd" stroke-width="2" fill="#483e37" />
 	<text fill="#fff" x='50' y='53' style='text-anchor: middle'>
 		<![CDATA[ {{name}} ]]>
 	</text>
