@@ -6,6 +6,24 @@ DIY - Diagram It Yourselft is a markdown language for describing easily the sche
 This tools is under development. Specific markdown language are not defined yet. Currently, we use JSON to
 describe diagram
 
+## Get Started
+
+### Installation
+
+* Download the lastest stable version here (version = 0.1.0 will be released soon). For the dev version : [Download](https://github.com/rdroro/diy-diagram-it-yourself/archive/master.zip)
+* Unzip archive
+* If you want, you can add diy to your path:
+
+    export PATH=${PATH}:/path/to/unizpped-archive/diy-diagram-it-yourself/bin
+
+### First test
+
+To test diy you can create a file contaning this following content:
+
+    
+
+
+
 ## Philosophy
 
 + GUI sucks : I want to edit my diagram from my text editor
