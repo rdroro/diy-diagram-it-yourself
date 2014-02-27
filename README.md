@@ -53,6 +53,10 @@ and run:
 
 diagram.svg is now available in your working directory.
 
+![Simple Exampla](http://i.imgur.com/fRAhi9c.png)
+
+Next ? See [documentation](doc/0.1.0/)
+
 
 ## License
 
