@@ -1,7 +1,7 @@
 diy-diagram-it-yourself
 =======================
 
-DIY - Diagram It Yourselft is a markdown language for easily describe the diagrams in your code documentation (interaction, dependance, workflow), on wiki pages or just to share diagrams with others people. Do not use specific software to share diagram with people, use DaaC (Diagram as a Code) ;)
+DIY - Diagram It Yourselft is a markdown language to easily describe the diagrams in your code documentation (interaction, dependance, workflow), on wiki pages or just to share diagrams with others people. Do not use specific software to share diagram with people, use DIY and discover new a concept: The DaaC (Diagram as a Code) ;)
 
 For example draw this:
 
