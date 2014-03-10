@@ -34,6 +34,11 @@ class Interpretor:
 
 		self.stats = {}
 
+		# Save the max size of element position
+		self.maxsize = {}
+		self.maxsize['x'] = 0
+		self.maxsize['y'] = 0
+
 		# Initialize SvgWriter for render
 		self.svg = SvgRender(self.defaultTemplatePath)
 		self.svgLinks = SvgRender(self.defaultTemplatePath)
@@ -90,6 +95,8 @@ class Interpretor:
 
 		r = {}
 		r['stats'] = self.stats
+		size = GridManagement.getDimension(self.maxsize)
+		self.svg.writeHeader(size)
 		r['diy'] = self.svg.__str__()
 		return r
 
@@ -106,6 +113,12 @@ class Interpretor:
 		# transform position by using GridManagement
 		# elements must have x and y parameters
 		coord = self.splitPosition(element['position'])
+
+		if coord[0] > self.maxsize['x']:
+			self.maxsize['x'] = coord[0]
+		if coord[1] > self.maxsize['y']:
+			self.maxsize['y'] = coord[1]
+
 		element['x'] = coord[0]
 		element['y'] = coord[1]
 		element = GridManagement.getPosition(element)

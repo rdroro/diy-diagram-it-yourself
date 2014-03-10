@@ -72,3 +72,10 @@ class GridManagement:
 		element['xCenter'] = element['x']+xCenter
 		element['yCenter'] = element['y']+yCenter
 		return element
+
+	@staticmethod
+	def getDimension(maxsize):
+		size = {}
+		size['x'] = (maxsize['x']+1)*GridManagement.X_SIZE
+		size['y'] = (maxsize['y']+1)*GridManagement.Y_SIZE
+		return size

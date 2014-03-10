@@ -68,12 +68,15 @@ class SvgRender:
 
 
 	
-	def writeHeader(self):
+	def writeHeader(self, size):
 		"""
 		Write svg header (in LIB/templates/default/svg/partials/header.tpl) 
 		into Public variable self.svgString
 		"""
-		self.svgString = self.getHeader()+self.svgString
+		headerStr = self.getHeader()
+		headerStr = headerStr.replace('{{x}}', size['x'].__str__())
+		headerStr = headerStr.replace('{{y}}', size['y'].__str__())
+		self.svgString = headerStr+self.svgString
 		self.hasHeader = True
 		return
 
