@@ -19,4 +19,8 @@
          style="fill:#483e37;fill-opacity:1;stroke:none" />
     </g>
   </g>
+   <text x="31.264896" y="84" style="font-size:12px;text-anchor:middle;fill:#fff;font-family:Sans"
+     font-size="12px">
+     <![CDATA[ {{name}} ]]>
+   </text>
 </g>
