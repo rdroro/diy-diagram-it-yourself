@@ -23,13 +23,15 @@ by writing this:
 + GUI sucks : I want to edit my diagram from my text editor
 + Less is more : I do not want to write a book for simple diagrams
 + It's Beautiful : I want a beautiful theme by default. Tired of ugly diagrams
-+ It's Ugly : AAAH, the default theme sucks, let me make it myself
-+ Code sucks : Bah, code sucks, give me a GUI
++ It's Ugly : AAAH, the default theme sucks, let me make it myself - not implemented in 0.1.0
++ Code sucks : Bah, code sucks, give me a GUI - not implemented in 0.1.0
 + Cross-platform : I'm sick of files that you can't edit without installing a gas-factory
 
 ## Get Started
 
 ### Installation
+
+You need python 2.7.x. Python 3 not tested yet.
 
 + Download the lastest stable version here (Alpha version: [0.1.0](https://github.com/rdroro/diy-diagram-it-yourself/archive/0.1.0.zip)). For the dev version : [Download](https://github.com/rdroro/diy-diagram-it-yourself/archive/master.zip)
 + Unzip archive
