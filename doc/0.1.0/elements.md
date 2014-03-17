@@ -3,7 +3,7 @@ Elements librairy
 
 This page describe the available elements. All elements are defaults key/value pairs which are detailed here.
 
-[Elements](http://i.imgur.com/j5LRBGd.png)
+![Elements](http://i.imgur.com/j5LRBGd.png)
 
 ## box
 
