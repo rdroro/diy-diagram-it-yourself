@@ -31,7 +31,7 @@ by writing this:
 
 ### Installation
 
-+ Download the lastest stable version here (version = 0.1.0 will be released soon). For the dev version : [Download](https://github.com/rdroro/diy-diagram-it-yourself/archive/master.zip)
++ Download the lastest stable version here (Alpha version: [0.1.0](https://github.com/rdroro/diy-diagram-it-yourself/archive/0.1.0.zip)). For the dev version : [Download](https://github.com/rdroro/diy-diagram-it-yourself/archive/master.zip)
 + Unzip archive
 + the tools is into diy-diagram-it-yourself/bin/diy
 
