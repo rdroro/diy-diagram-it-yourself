@@ -38,3 +38,9 @@ Image
 ## server
 
     server(name: server; position: 0,0; vertical-align: middle; horizontal-align: middle)
+    
+## link
+
+    link(from: ELEMENT_NAME; to: ELEMENT_NAME; color: #ddd)
+
+The "color" attributes must be a CSS2 compatible value [Specification](http://www.w3.org/TR/SVG/types.html#DataTypeColor)
