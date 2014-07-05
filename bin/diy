@@ -66,7 +66,6 @@ def start(input_file, output_file, jsoninput):
     """
     Start
     """
-    print "JSON : " + jsoninput.__str__()
     if not path.exists(input_file):
         usage()
         printError("Input file does not exist: "+input_file)
@@ -82,15 +81,6 @@ def start(input_file, output_file, jsoninput):
             json = Parser.parse_json(markdown_content)
         else:
             json = Parser.parse_markdown(markdown_content)
-
-        # for dic in json:
-        #     for key, value in dic.iteritems():
-        #         print key
-        #         print "v"
-        #         print type(key)
-        #         print value
-        #         print "v"
-        #         print type(value)
 
         interpretor = Interpretor(json, PROGRAM_DIR+"/lib")
         result = interpretor.generate()

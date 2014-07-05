@@ -1,4 +1,4 @@
-box(name: boxé)
+box(name: boxe)
 circle(name: circle; position: 1,0)
 database(name: database; position: 2,0)
 desktop(name: desktop; position: 0,1)

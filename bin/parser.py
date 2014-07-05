@@ -38,8 +38,10 @@ class Parser:
             for couples in attributes:
                 couple = couples.split(":")
                 couple[0] = reBlank.sub("", couple[0].__str__())
-                couple[1] = couple[1].__str__().strip()
-                jsonElement[couple[0].__str__()] = couple[1].__str__()
+                # strip() seems to need a str, no unicode
+                couple[1] = couple[1].encode("utf8").strip()
+                # but we need to save in unicode format
+                jsonElement[couple[0].__str__()] = couple[1].decode("utf8")
             jsoned.append(jsonElement)
 
         return jsoned

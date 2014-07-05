@@ -101,6 +101,4 @@ class SvgRender:
         if not self.hasFooter:
             svgDocument += self.getFooter()
 
-        print type(svgDocument)
-
         return svgDocument.decode("utf8")
