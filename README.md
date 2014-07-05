@@ -59,6 +59,12 @@ diagram.svg is now available in your working directory.
 
 Next ? See [documentation](doc/0.1.0/)
 
+## Contribute
+
+If you want to contribute, the pull requests are welcome !
+
+Just check the [contribute draft page](doc/0.1.0/contribute.md) before submit your code.
+
 
 ## License
 
