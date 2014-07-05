@@ -1,10 +1,9 @@
-
+# -*- coding: utf8 -*-
 class NotJSONException (Exception):
-	"""docstring for NotJSONException """
-	def __init__(self, arg):
-		
-		self.arg = arg
+    """docstring for NotJSONException """
+    def __init__(self, arg):
 
-	def __str__(self):
-		return repr(self.value)
-		
+        self.arg = arg
+
+    def __str__(self):
+        return repr(self.value)

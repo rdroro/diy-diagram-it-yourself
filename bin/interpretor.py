@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 import os
 import json
 import re
@@ -76,7 +77,7 @@ class Interpretor:
                 base = self.getGridPosition(base)
 
                 # Store hash of name in namedElements
-                hashName = hashlib.md5(base['name'])
+                hashName = hashlib.md5(base['name'].encode("utf8"))
                 self.namedElements[hashName.hexdigest()] = base
 
                 # Transform JSON element to SVG

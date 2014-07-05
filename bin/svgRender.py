@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 import re
 
 
@@ -30,7 +31,12 @@ class SvgRender:
         eltFile.close
         for key, value in element.iteritems():
             if (key != 'type'):
-                elt = elt.replace('{{'+key.__str__()+'}}', value.__str__().decode("utf-8"))
+                # The if resolve unicode issue
+                if type(value) is unicode:
+                    # In the best world, every String must be store in unicode format
+                    elt = elt.replace('{{'+key.__str__()+'}}', value.encode("utf8"))
+                else:
+                    elt = elt.replace('{{'+key.__str__()+'}}', value.__str__())
         self.svgString += "\n"+elt
 
     def prependFragment(self, svgElement):
@@ -95,4 +101,6 @@ class SvgRender:
         if not self.hasFooter:
             svgDocument += self.getFooter()
 
-        return svgDocument
+        print type(svgDocument)
+
+        return svgDocument.decode("utf8")

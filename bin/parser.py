@@ -1,25 +1,26 @@
+# -*- coding: utf8 -*-
 import json
 import re
 import exception
+import codecs
 
 
 class Parser:
     """
     Read DIY language and transform it in JSON
+    @todo what's happen when str is empty ?
     """
 
     @staticmethod
-    def parse(file):
+    def parse_markdown(str):
         """"
-        Parse file - a file object - to transform DIY language to JSONArray
+        Parse str - String - to transform DIY language to dictionnary
+        @todo manage errors
 
         Args:
-            file: file object containing DIY language
+            str: str string containing DIY language
         Returns:
-            the parsed input. JSONArray
-        Raises:
-            NotJSONException if input is not valid JSON input
-
+            the parsed input in dictionnary
         """
 
         jsoned = []
@@ -27,9 +28,7 @@ class Parser:
         reElements = re.compile("(\w*)\((.*?)\)", re.S)
         reBlank = re.compile('\s*')
 
-        # get only code between tag @diy: :yid@
-        # get each element
-        elements = reElements.findall(file)
+        elements = reElements.findall(str)
         if len(elements) == 0:
             raise exception.NoElementFoundExeception()
         for element in elements:
@@ -46,11 +45,20 @@ class Parser:
         return jsoned
 
     @staticmethod
-    def load(file):
-        jsoned = ""
+    def parse_json(str):
+        """
+        Parse str - String to transform JSON string to dictionnary
+
+        Args:
+            str: str string containing DIY language
+        Raises:
+            NotJSONException if input is not valid JSON input
+        """
         try:
-            jsoned = json.loads(file)
+            jsoned = json.loads(str)
+
         except Exception as e:
+            print e
             raise exception.NotJSONException("")
 
         return jsoned

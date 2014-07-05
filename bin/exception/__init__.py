@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 from JSONException import NotJSONException
 from PositionException import MalFomattedPositionException
 from PositionException import NotIntegerValueException

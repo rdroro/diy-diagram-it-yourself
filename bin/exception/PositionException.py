@@ -1,14 +1,16 @@
+# -*- coding: utf8 -*-
 class MalFomattedPositionException(Exception):
-	"""docstring for MalFomattedPositionException"""
-	def __init__(self, arg):
-		self.arg = arg
+    """docstring for MalFomattedPositionException"""
+    def __init__(self, arg):
+        self.arg = arg
 
-	def __str__(self):
-		return self.arg
+    def __str__(self):
+        return self.arg
+
 
 class NotIntegerValueException(Exception):
-	def __init__(self, arg):
-		self.arg = arg
+    def __init__(self, arg):
+        self.arg = arg
 
-	def __str__(self):
-		return self.arg
+    def __str__(self):
+        return self.arg
