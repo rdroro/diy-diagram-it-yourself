@@ -14,13 +14,13 @@ class Parser:
     @staticmethod
     def parse_markdown(str):
         """"
-        Parse str - String - to transform DIY language to dictionnary
+        Parse str - String - to transform DIY language to dictionary
         @todo manage errors
 
         Args:
             str: str string containing DIY language
         Returns:
-            the parsed input in dictionnary
+            the parsed input in dictionary
         """
 
         jsoned = []
@@ -49,7 +49,7 @@ class Parser:
     @staticmethod
     def parse_json(str):
         """
-        Parse str - String to transform JSON string to dictionnary
+        Parse str - String to transform JSON string to dictionary
 
         Args:
             str: str string containing DIY language

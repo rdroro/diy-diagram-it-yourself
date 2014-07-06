@@ -32,7 +32,7 @@ class Interpretor:
         # Store links elements
         self.links = []
 
-        # Store all elements (except links) in dictionnary where element['name'] is the key
+        # Store all elements (except links) in dictionary where element['name'] is the key
         self.namedElements = {}
 
         self.stats = {}
@@ -62,7 +62,7 @@ class Interpretor:
                 base = json.load(open(self.defaultTemplatePath+'/json/'+obj['type']+'.json'))
                 base.update(obj)
 
-                # Links have a different behaviour than other elements
+                # Links have a different behavior than other elements
                 if obj['type'] == "link":
                     base['from'] = base['from']
                     base['to'] = base['to']
@@ -105,9 +105,9 @@ class Interpretor:
         Transform grid position into pixel position using GridManagement
 
         Args:
-            element: a dictionnary of one element
+            element: a dictionary of one element
         Returns:
-            dictonnary element passed in parameter with pixel value for x and y
+            dictonary element passed in parameter with pixel value for x and y
         """
         # transform position by using GridManagement
         # elements must have x and y parameters
@@ -128,7 +128,7 @@ class Interpretor:
         Parse "x,y" string and return list where 0 is x and 1 is y int value
 
         Args:
-            position: a string wich can match this regex: [1-9]\d*\s*,[1-9]\d*
+            position: a string which can match this regex: [1-9]\d*\s*,[1-9]\d*
         Returns:
             A list where [0] represents integer x value and [1] represents integer y value
         Raises:
@@ -152,7 +152,7 @@ class Interpretor:
         Transform embedded link to normal link
 
         Args:
-            element: A element dictionnary
+            element: A element dictionary
         """
         element['link'] = element['link']
         toElements = element['link'].split(',')
@@ -170,9 +170,9 @@ class Interpretor:
         Set start and stop position for a link by getting from and to position element
 
         Args:
-            link: a dictionnary representing one link
+            link: a dictionary representing one link
         Returns:
-            dictionnary link element with start and end position in pixel
+            dictionary link element with start and end position in pixel
         """
         fromHashName = hashlib.md5(link['from'])
         try:

@@ -1,7 +1,7 @@
 diy-diagram-it-yourself
 =======================
 
-DIY - Diagram It Yourselft is a markdown language to easily describe the diagrams in your code documentation (interaction, dependance, workflow), on wiki pages or just to share diagrams with others people. Do not use specific software to share diagram with people, use DIY and discover a new approach: The DaaC (Diagram as a Code) ;)
+DIY - Diagram It Yourself is a markdown language to easily describe the diagrams in your code documentation (interaction, dependence, workflow), on wiki pages or just to share diagrams with others people. Do not use specific software to share diagram with people, use DIY and discover a new approach: The DaaC (Diagram as a Code) ;)
 
 For example draw this:
 
@@ -33,7 +33,7 @@ by writing this:
 
 You need python 2.7.x. Python 3 not tested yet.
 
-+ Download the lastest stable version here (Alpha version: [0.1.0](https://github.com/rdroro/diy-diagram-it-yourself/archive/0.1.0.zip)). For the dev version : [Download](https://github.com/rdroro/diy-diagram-it-yourself/archive/master.zip)
++ Download the latest stable version here (Alpha version: [0.1.0](https://github.com/rdroro/diy-diagram-it-yourself/archive/0.1.0.zip)). For the dev version : [Download](https://github.com/rdroro/diy-diagram-it-yourself/archive/master.zip)
 + Unzip archive
 + the tools is into diy-diagram-it-yourself/bin/diy
 
@@ -43,7 +43,7 @@ If you want to use DIY everywhere just add it into your path:
 
 ### First test
 
-To test diy you can create a demo.diy file contaning:
+To test diy you can create a demo.diy file containing:
 
     box(name: DIY Language; position: 0,0; link: DIY Program)
     circle(name: DIY Program; position: 1,0; link: SVG Diagram)
@@ -55,7 +55,7 @@ and run:
 
 diagram.svg is now available in your working directory.
 
-![Simple Exampla](http://i.imgur.com/fRAhi9c.png)
+![Simple Example](http://i.imgur.com/fRAhi9c.png)
 
 Next ? See [documentation](doc/0.1.0/)
 

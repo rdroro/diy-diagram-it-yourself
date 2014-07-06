@@ -3,7 +3,7 @@ Contribute
 
 @todo : Improve this page. 
 
-Juste few indications for contributors (and for me if I'll forget)
+Just few indications for contributors (and for me if I'll forget)
 
 ## Code
 

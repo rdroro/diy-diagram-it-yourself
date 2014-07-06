@@ -47,11 +47,11 @@ class TestParser(unittest.TestCase):
         self.assertRaises(exception.NotJSONException, Parser.parse_json, jsonstr)
 
     def parse_markdown_test(self):
-        # Check the retun type
+        # Check the return type
         jsonList = Parser.parse_markdown(self.markdownstr)
         # Must be a list
         self.assertIsInstance(jsonList, list)
-        # Each elements must be dic
+        # Each elements must be dict
         for dic in jsonList:
             self.assertIsInstance(dic, dict)
 

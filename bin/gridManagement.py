@@ -19,13 +19,13 @@ class GridManagement:
     """
     Static method which convert grid position (x, y) to pixel position.
     Use GridManagement.X_SIZE and GridManagement.Y_SIZE to determine the default
-    cell size. You can also manage the vertical and horizontal alignement.
-    Vertical possible alignement values are "top", "middle", "bottom".
-    Horizontal psossible alignement values are "left", "middle", "right".
+    cell size. You can also manage the vertical and horizontal alignment.
+    Vertical possible alignment values are "top", "middle", "bottom".
+    Horizontal possible alignment values are "left", "middle", "right".
 
     Args:
         element - a dictionary that must contains key:
-            x -- The horizontal postion in a grid
+            x -- The horizontal position in a grid
             y -- The vertical position in a grid
             vertical-align -- The vertical position in a cell
             horizontal-align -- The horizontal position in a cell
@@ -43,7 +43,7 @@ class GridManagement:
         verticalAlignement = element['vertical-align']
         horizontalAlignement = element['horizontal-align']
 
-        # Default alignement is top, top
+        # Default alignment is top, top
         verticalAlign = GridManagement.VERTICAL_TOP_ALIGN
         horizontalAlign = GridManagement.HORIZONTAL_LEFT_ALIGN
 

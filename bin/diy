@@ -2,7 +2,7 @@
 # -*- coding: utf8 -*-
 
 """
-main program to transform DIY language in diagramm
+main program to transform DIY language in diagram
 
 """
 
@@ -107,7 +107,7 @@ def start(input_file, output_file, jsoninput):
 
 def printStats(stats):
     """
-    Display some statistics as number of linkd and elements
+    Display some statistics as number of linked and elements
     """
     print " --------------------------------------- "
     print "|               Stats                   |"

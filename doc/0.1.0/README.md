@@ -22,8 +22,8 @@ ELEMENT_NAME: is a name of the element to draw. List of available elements is [h
 ATTRIBUTE: VALUE: The attribute of one element represented by key/value pairs. To separate them, you need to use ';' All elements have the defaults attributes/value:
 * name: To define the name of element. This name can be drawn into the element (cf. [Elements page](elements.md) to see the behavior of each element). name attributes is also used to link elements together.
 * position: To define the position of an element. X and Y coordinates separated by ',' See [grid.md](grid.md)
-* vertical-align: The vertical alignement of the element into the cell. Possible value: top, middle, bottom
-* horizontal-align: The horizontal alignement of the element into the cell. Possible value: left, middle, right
+* vertical-align: The vertical alignment of the element into the cell. Possible value: top, middle, bottom
+* horizontal-align: The horizontal alignment of the element into the cell. Possible value: left, middle, right
 
 ## Links: particular elements
 
@@ -38,7 +38,7 @@ To link elements together, there is two ways. With the first one, just put the n
     box(name: DIY Program; position: 1,0)
     box(name: Other box; position: 1, 1)
 
-If for some reasons, you want to externalise links you can write
+If for some reasons, you want to externalize links you can write
 
     box(name: DIY Language)
     box(name: DIY Program; position: 1,0)
