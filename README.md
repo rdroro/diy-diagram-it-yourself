@@ -24,7 +24,7 @@ by writing this:
 + Less is more : I do not want to write a book for simple diagrams
 + It's Beautiful : I want a beautiful theme by default. Tired of ugly diagrams
 + It's Ugly : AAAH, the default theme sucks, let me make it myself - not implemented in 0.1.0
-+ Code sucks : Bah, code sucks, give me a GUI - not implemented in 0.1.0
++ Code sucks : AAAH, code sucks, give me a GUI - not implemented in 0.1.0
 + Cross-platform : I'm sick of files that you can't edit without installing a gas-factory
 
 ## Get Started
