@@ -1,0 +1,29 @@
+{
+  "name": "daac",
+  "version": "0.2.0",
+  "description": "daac - Diagram As A Code is a markdown language to easily describe the diagram in your code documentation",
+  "main": "index.js",
+  "bin": {
+    "daac": "main.js"
+  },
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rdroro/diy-diagram-it-yourself.git"
+  },
+  "author": "Romain Dubos",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/rdroro/diy-diagram-it-yourself/issues"
+  },
+  "homepage": "https://github.com/rdroro/diy-diagram-it-yourself",
+  "dependencies": {
+    "lodash": "^2.4.1"
+  }
+}

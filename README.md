@@ -1,7 +1,7 @@
 diy-diagram-it-yourself
 =======================
 
-DIY - Diagram It Yourself is a markdown language to easily describe the diagrams in your code documentation (interaction, dependence, workflow), on wiki pages or just to share diagrams with others people. Do not use specific software to share diagram with people, use DIY and discover a new approach: The DaaC (Diagram as a Code) ;)
+DIY - Diagram It Yourself is a markdown language to easily describe the diagrams (interaction, dependence, workflow) in your code documentation, on wiki pages or just to share diagrams with others people. Do not use specific software to share diagram with people, use DIY and discover a new approach: The DaaC (Diagram as a Code) ;)
 
 For example draw this:
 
@@ -20,26 +20,18 @@ by writing this:
 
 ## Philosophy
 
-+ GUI sucks : I want to edit my diagram from my text editor
-+ Less is more : I do not want to write a book for simple diagrams
-+ It's Beautiful : I want a beautiful theme by default. Tired of ugly diagrams
-+ It's Ugly : AAAH, the default theme sucks, let me make it myself - not implemented in 0.1.0
-+ Code sucks : AAAH, code sucks, give me a GUI - not implemented in 0.1.0
-+ Cross-platform : I'm sick of files that you can't edit without installing a gas-factory
++ **GUI sucks** : I want to edit my diagram from my text editor
++ **Less is more** : I do not want to write a book for simple diagrams
++ **It's Beautiful** : I want a beautiful theme by default. Tired of ugly diagrams
++ **It's Ugly** : AAAH, the default theme sucks, let me make it myself - not implemented in 0.1.0
++ **Code sucks** : AAAH, code sucks, give me a GUI - not implemented in 0.1.0
++ **Cross-platform** : I'm sick of files that you can't edit without installing a gas-factory
 
 ## Get Started
 
 ### Installation
 
-You need python 2.7.x. Python 3 not tested yet.
-
-+ Download the latest stable version here (Alpha version: [0.1.0](https://github.com/rdroro/diy-diagram-it-yourself/archive/0.1.0.zip)). For the dev version : [Download](https://github.com/rdroro/diy-diagram-it-yourself/archive/master.zip)
-+ Unzip archive
-+ the tools is into diy-diagram-it-yourself/bin/diy
-
-If you want to use DIY everywhere just add it into your path:
-
-    export PATH=${PATH}:/path/to/unizpped-archive/diy-diagram-it-yourself/bin
+@todo Write the installation process via npm
 
 ### First test
 
@@ -68,24 +60,19 @@ Just check the [contribute draft page](doc/0.1.0/contribute.md) before submit yo
 
 ## License
 
-The MIT License (MIT)
+This program is under the GNU General Public License v3.0
 
-Copyright (c) 2013-2014 Romain Dubos
+Copyright (C) 2013-2014 Romain Dubos
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
