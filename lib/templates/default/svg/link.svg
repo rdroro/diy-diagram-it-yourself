@@ -1,1 +1,0 @@
-<line x1="{{xStart}}" y1="{{yStart}}" x2="{{xEnd}}" y2='{{yEnd}}' stroke-width="{{strokeWidth}}" stroke='{{color}}'/>

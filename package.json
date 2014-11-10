@@ -2,9 +2,9 @@
   "name": "daac",
   "version": "0.2.0",
   "description": "daac - Diagram As A Code is a markdown language to easily describe the diagram in your code documentation",
-  "main": "index.js",
+  "main": "lib/main.js",
   "bin": {
-    "daac": "main.js"
+    "daac": "bin/main.js"
   },
   "directories": {
     "doc": "doc",
@@ -24,6 +24,13 @@
   },
   "homepage": "https://github.com/rdroro/diy-diagram-it-yourself",
   "dependencies": {
+    "commander": "^2.5.0",
+    "handlebars": "^2.0.0",
     "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "mocha": "^2.0.1"
   }
 }

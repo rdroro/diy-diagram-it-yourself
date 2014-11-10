@@ -4,7 +4,7 @@ var assert = require("assert"); // node.js core module
 var validEltname        = 'box()';
 var errorEltName        = 'box(';
 var validOneAttr        = 'box(name: Controller)';
-var validMultipleAttr   = 'box(name: Model;  position : 1,0)';
+var validMultipleAttr   = 'box(name:controller; position:1,0 ; x:34; y:45)';
 var validMultipleElt   = 'box(name: Model;  position : 1,0) \n circle()';
 var validMultipleElt2   = 'box(name: Model;  position : 1,0) \n circle(name: Controller)';
 
@@ -38,9 +38,6 @@ describe('Parser.js', function(){
 
   });
 
-});
-
-describe('Parser.js', function () {
   describe('Parse string', function () {
     it('The string "'+validEltname+'" must return [["box"]] ', function (){
       var eval = Parser.parse(validEltname);
@@ -52,9 +49,9 @@ describe('Parser.js', function () {
       assert.deepEqual([['box', 'name:Controller']], eval);
     });
 
-    it('The string "'+validMultipleAttr+'" must return [["box", "name:Model", "position:1,0"]]', function () {
+    it('The string "'+validMultipleAttr+'" must return [["box", "name:controller", "position:1,0", "x:34", "y:45"]]', function () {
       var eval = Parser.parse(validMultipleAttr);
-      assert.deepEqual([["box", "name:Model", "position:1,0"]], eval);
+      assert.deepEqual([["box", "name:controller", "position:1,0", "x:34", "y:45"]], eval);
     });
 
     it('The string "'+validMultipleElt+'" must return [["box", "name:Model", "position:1,0"],["circle"]]', function () {
@@ -67,4 +64,33 @@ describe('Parser.js', function () {
       assert.deepEqual([["box", "name:Model", "position:1,0"],["circle", "name:Controller"]], eval);
     });
   });
+
+  var fs = require('fs');
+  var jsonRefPath = 'lib/templates/default/json/';
+  describe('Compile array', function () {
+    it('The array [["box", "name:controller", "position:2,2"]] must return a JSON array of one box object', function () {
+      var ref = fs.readFileSync(jsonRefPath+'box.json', 'utf8');
+      var box = JSON.parse(ref);
+      box.name = 'controller';
+      box.position = '2,2';
+
+      var expected = [box];
+      var arr = [['box', 'name:controller', 'position:2,2']];
+      assert.deepEqual(expected, Parser.compile(arr));
+    });
+
+    it('Test if multiple elements compile', function () {
+      var ref = fs.readFileSync(jsonRefPath+'box.json', 'utf8');
+      var box = JSON.parse(ref);
+      box.name = 'controller';
+
+      ref = fs.readFileSync(jsonRefPath+'circle.json', 'utf8');
+      var circle = JSON.parse(ref);
+
+      var expected = [box, circle];
+      var arr = [['box', 'name:controller'], ['circle']];
+      assert.deepEqual(expected, Parser.compile(arr));
+    });
+  });
+
 });
