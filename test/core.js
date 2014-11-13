@@ -1,5 +1,10 @@
 var Parser = require('../bin/parser.js');
 var assert = require("assert"); // node.js core module
+var _ = require('lodash');
+var path = require('path');
+var fs = require('fs');
+var lib = path.join(path.dirname(fs.realpathSync(__filename)), '../lib/templates/default');
+var jsonlib = require(lib+'/json/default.js');
 
 var validEltname        = 'box()';
 var errorEltName        = 'box(';
@@ -69,8 +74,7 @@ describe('Parser.js', function(){
   var jsonRefPath = 'lib/templates/default/json/';
   describe('Compile array', function () {
     it('The array [["box", "name:controller", "position:2,2"]] must return a JSON array of one box object', function () {
-      var ref = fs.readFileSync(jsonRefPath+'box.json', 'utf8');
-      var box = JSON.parse(ref);
+      var box = _.clone(jsonlib.elements.box);
       box.name = 'controller';
       box.position = '2,2';
 
@@ -80,12 +84,10 @@ describe('Parser.js', function(){
     });
 
     it('Test if multiple elements compile', function () {
-      var ref = fs.readFileSync(jsonRefPath+'box.json', 'utf8');
-      var box = JSON.parse(ref);
+      var box = _.clone(jsonlib.elements.box);
       box.name = 'controller';
 
-      ref = fs.readFileSync(jsonRefPath+'circle.json', 'utf8');
-      var circle = JSON.parse(ref);
+      var circle = _.clone(jsonlib.elements.circle);
 
       var expected = [box, circle];
       var arr = [['box', 'name:controller'], ['circle']];

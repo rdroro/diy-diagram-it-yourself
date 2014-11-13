@@ -71,7 +71,7 @@
     }
     var links = addLinks(jsonArray);
 
-    var svgLinkSource = getSvgString('link');
+    var svgLinkSource = _.clone(svglib.elements.link);
     var linkDiagram = '';
     var linkTemplate = Handlebars.compile(svgLinkSource);
 
