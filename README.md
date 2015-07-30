@@ -62,7 +62,7 @@ Just check the [contribute draft page](doc/0.1.0/contribute.md) before submit yo
 
 This program is under the GNU General Public License v3.0
 
-Copyright (C) 2013-2014 Romain Dubos
+Copyright (C) 2013-2015 Romain Dubos
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
